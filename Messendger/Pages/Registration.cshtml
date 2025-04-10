@@ -1,0 +1,120 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Messendger.Pages.RegistrationModel
+@{
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+   </head>
+<body class="bg-dark text-light">
+  <nav class="navbar bg-danger">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="#">
+                <img src="~/res/image/Sinara.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-center">
+                СТМ | РСП-М
+            </a>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-2 mb-3" style="text-align: center;">Регистрация</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form method="post">
+                    <label for="surname" class="form-label">Фамилия</label>
+                    <input id="surname" name="surname" class="form-control mb-3" type="text">
+                    <label for="name" class="form-label">Имя</label>
+                    <input id="name" name="name" class="form-control mb-3" type="text">
+                    <label for="lastname" class="form-label">Отчество</label>
+                    <input id="lastname" name="lastname" class="form-control mb-3" type="text">
+                    <label for="birthday" class="form-label">Дата рождения</label>
+                    <input id="birthday" name="birthday" class="form-control mb-3" type="date">
+                    <div class="d-flex align-items-center">
+                        <label for="speciality" class="form-label">Ваша специальность</label>
+                        <button class="btn bg-light bg-gradient mb-1 ms-1 btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
+                    </div>
+                    <select class="form-select mb-3" name="speciality" id="speciality">
+                        <option value="1">Один</option>
+                        <option value="2">Два</option>
+                        <option value="3">Три</option>
+                    </select>
+                    <label for="login" class="form-label">Почта</label>
+                    <input id="login" asp-for="input.Login" name="login" class="form-control mb-3" type="email">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input id="password" asp-for="input.Password"  name="password" class="form-control mb-3" type="password">
+                    <label for="reppassword" class="form-label">Повторите пароль</label>
+                    <input id="reppassword" class="form-control mb-3" type="password">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <button type="button" id="inputBtn" class="btn btn-danger">Войти</button>
+                            </div>
+                            <div class="col-auto">
+                                <input type="submit" value="Зарегистрироваться" class="btn btn-danger">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </main>
+    <footer class="bg-danger text-white text-center py-1 mt-5">
+        <div class="container">
+            <p>&copy; 2025 Мой сайт. Все права защищены.</p>
+        </div>
+    </footer>
+    <div class="modal fade" id="addSpecialtyModal" tabindex="-1" aria-labelledby="addSpecialtyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" asp-page-handler="AddSpecialty">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addSpecialtyModalLabel">Добавить специальность</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="specialtyName" class="form-label">Название специальности</label>
+                            <input type="text" class="form-control" id="specialtyName" name="SpecialtyName" required />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Добавить</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-black" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Добавить специальность</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <form>
+                <div class="modal-body">
+                        <label class="form-label">Название</label>
+                        <input class="form-control" type="text" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary">Сохранить изменения</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/scripts/RegScript.js"></script>
+</body>
+</html>
