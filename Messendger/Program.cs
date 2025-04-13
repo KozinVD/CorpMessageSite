@@ -23,6 +23,8 @@ namespace Messendger
             {
                 return db.Users;
             });
+            //string url = builder.Configuration.GetConnectionString("Url");
+            //app.Urls.Add(url);
             app.Run();
         }
     }

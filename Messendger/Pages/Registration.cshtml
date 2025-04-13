@@ -28,28 +28,30 @@
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4">
-                <form method="post">
+                <form method="post" id="formReg">
                     <label for="surname" class="form-label">Фамилия</label>
-                    <input id="surname" name="surname" class="form-control mb-3" type="text">
+                    <input id="surname" asp-for="input.Surname"  class="form-control mb-3" type="text">
                     <label for="name" class="form-label">Имя</label>
-                    <input id="name" name="name" class="form-control mb-3" type="text">
+                    <input id="name" asp-for="input.Name" class="form-control mb-3" type="text">
                     <label for="lastname" class="form-label">Отчество</label>
-                    <input id="lastname" name="lastname" class="form-control mb-3" type="text">
+                    <input id="lastname" asp-for="input.Lastname" class="form-control mb-3" type="text">
                     <label for="birthday" class="form-label">Дата рождения</label>
-                    <input id="birthday" name="birthday" class="form-control mb-3" type="date">
+                    <input id="birthday" asp-for="input.Birthday" class="form-control mb-3" type="date">
                     <div class="d-flex align-items-center">
                         <label for="speciality" class="form-label">Ваша специальность</label>
                         <button class="btn bg-light bg-gradient mb-1 ms-1 btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
                     </div>
-                    <select class="form-select mb-3" name="speciality" id="speciality">
-                        <option value="1">Один</option>
-                        <option value="2">Два</option>
-                        <option value="3">Три</option>
+                    <select class="form-select mb-3" asp-for="input.IdJob" id="speciality">
+                        <option value="">-- Выберите профессию --</option>
+                        @foreach (var item in Model.db.Jobs)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
                     </select>
                     <label for="login" class="form-label">Почта</label>
-                    <input id="login" asp-for="input.Login" name="login" class="form-control mb-3" type="email">
+                    <input id="login" asp-for="input.Login" class="form-control mb-3" type="email">
                     <label for="password" class="form-label">Пароль</label>
-                    <input id="password" asp-for="input.Password"  name="password" class="form-control mb-3" type="password">
+                    <input id="password" asp-for="input.Password" class="form-control mb-3" type="password">
                     <label for="reppassword" class="form-label">Повторите пароль</label>
                     <input id="reppassword" class="form-control mb-3" type="password">
                     <div class="container">
@@ -72,28 +74,6 @@
             <p>&copy; 2025 Мой сайт. Все права защищены.</p>
         </div>
     </footer>
-    <div class="modal fade" id="addSpecialtyModal" tabindex="-1" aria-labelledby="addSpecialtyModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form method="post" asp-page-handler="AddSpecialty">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addSpecialtyModalLabel">Добавить специальность</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="specialtyName" class="form-label">Название специальности</label>
-                            <input type="text" class="form-control" id="specialtyName" name="SpecialtyName" required />
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Добавить</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <div class="modal fade text-black" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -101,14 +81,14 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Добавить специальность</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
-                <form>
+                <form method="post">
                 <div class="modal-body">
                         <label class="form-label">Название</label>
-                        <input class="form-control" type="text" />
+                        <input class="form-control" asp-for="@Model.NameJob" type="text" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                    <button type="button" class="btn btn-primary">Сохранить изменения</button>
+                        <button type="submit" asp-page-handler="AddSpecialty" class="btn btn-primary">Сохранить изменения</button>
                 </div>
                 </form>
             </div>

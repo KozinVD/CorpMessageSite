@@ -1,29 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\",
+  "WorkspaceRootPath": "C:\\Users\\Anya\\Desktop\\CorpMessageSite-master\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\rjpby\\desktop\\\u0434\u0438\u043F\u043B\u043E\u043C\\messendger\\messendger\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|solutionrelative:messendger\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\rjpby\\desktop\\\u0434\u0438\u043F\u043B\u043E\u043C\\messendger\\messendger\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|solutionrelative:messendger\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\rjpby\\desktop\\\u0434\u0438\u043F\u043B\u043E\u043C\\messendger\\messendger\\pages\\registration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|solutionrelative:messendger\\pages\\registration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\rjpby\\desktop\\\u0434\u0438\u043F\u043B\u043E\u043C\\messendger\\messendger\\wwwroot\\scripts\\regscript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\anya\\desktop\\corpmessagesite-master\\messendger\\wwwroot\\scripts\\regscript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|solutionrelative:messendger\\wwwroot\\scripts\\regscript.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\rjpby\\desktop\\\u0434\u0438\u043F\u043B\u043E\u043C\\messendger\\messendger\\pages\\registration.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\anya\\desktop\\corpmessagesite-master\\messendger\\pages\\registration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|solutionrelative:messendger\\pages\\registration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\anya\\desktop\\corpmessagesite-master\\messendger\\pages\\registration.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|solutionrelative:messendger\\pages\\registration.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\rjpby\\desktop\\\u0434\u0438\u043F\u043B\u043E\u043C\\messendger\\messendger\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|c:\\users\\anya\\desktop\\corpmessagesite-master\\messendger\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8C2C66CC-41D6-422F-9A8C-468150A6FC15}|Messendger\\Messendger.csproj|solutionrelative:messendger\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,83 +26,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RegScript.js",
-              "DocumentMoniker": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\wwwroot\\scripts\\RegScript.js",
-              "RelativeDocumentMoniker": "Messendger\\wwwroot\\scripts\\RegScript.js",
-              "ToolTip": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\wwwroot\\scripts\\RegScript.js",
-              "RelativeToolTip": "Messendger\\wwwroot\\scripts\\RegScript.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-04-09T15:43:48.698Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Pages\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "Messendger\\Pages\\Index.cshtml.cs",
-              "ToolTip": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Pages\\Index.cshtml.cs",
-              "RelativeToolTip": "Messendger\\Pages\\Index.cshtml.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBcAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:02:03.665Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Pages\\Index.cshtml",
-              "RelativeDocumentMoniker": "Messendger\\Pages\\Index.cshtml",
-              "ToolTip": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Pages\\Index.cshtml",
-              "RelativeToolTip": "Messendger\\Pages\\Index.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-09T14:58:55.866Z",
+              "Title": "RegScript.js",
+              "DocumentMoniker": "C:\\Users\\Anya\\Desktop\\CorpMessageSite-master\\Messendger\\wwwroot\\scripts\\RegScript.js",
+              "RelativeDocumentMoniker": "Messendger\\wwwroot\\scripts\\RegScript.js",
+              "ToolTip": "C:\\Users\\Anya\\Desktop\\CorpMessageSite-master\\Messendger\\wwwroot\\scripts\\RegScript.js",
+              "RelativeToolTip": "Messendger\\wwwroot\\scripts\\RegScript.js",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAEAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-12T22:02:33.4Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Registration.cshtml",
-              "DocumentMoniker": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Pages\\Registration.cshtml",
-              "RelativeDocumentMoniker": "Messendger\\Pages\\Registration.cshtml",
-              "ToolTip": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Pages\\Registration.cshtml",
-              "RelativeToolTip": "Messendger\\Pages\\Registration.cshtml",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAHUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-08T15:06:42.048Z",
+              "Title": "Registration.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Anya\\Desktop\\CorpMessageSite-master\\Messendger\\Pages\\Registration.cshtml.cs",
+              "RelativeDocumentMoniker": "Messendger\\Pages\\Registration.cshtml.cs",
+              "ToolTip": "C:\\Users\\Anya\\Desktop\\CorpMessageSite-master\\Messendger\\Pages\\Registration.cshtml.cs",
+              "RelativeToolTip": "Messendger\\Pages\\Registration.cshtml.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAC0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T22:18:57.87Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Registration.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Pages\\Registration.cshtml.cs",
-              "RelativeDocumentMoniker": "Messendger\\Pages\\Registration.cshtml.cs",
-              "ToolTip": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Pages\\Registration.cshtml.cs",
-              "RelativeToolTip": "Messendger\\Pages\\Registration.cshtml.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwCAAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T15:07:57.702Z"
+              "DocumentIndex": 1,
+              "Title": "Registration.cshtml",
+              "DocumentMoniker": "C:\\Users\\Anya\\Desktop\\CorpMessageSite-master\\Messendger\\Pages\\Registration.cshtml",
+              "RelativeDocumentMoniker": "Messendger\\Pages\\Registration.cshtml",
+              "ToolTip": "C:\\Users\\Anya\\Desktop\\CorpMessageSite-master\\Messendger\\Pages\\Registration.cshtml",
+              "RelativeToolTip": "Messendger\\Pages\\Registration.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-11T22:18:46.936Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Anya\\Desktop\\CorpMessageSite-master\\Messendger\\Program.cs",
               "RelativeDocumentMoniker": "Messendger\\Program.cs",
-              "ToolTip": "C:\\Users\\rjpby\\Desktop\\\u0414\u0438\u043F\u043B\u043E\u043C\\Messendger\\Messendger\\Program.cs",
+              "ToolTip": "C:\\Users\\Anya\\Desktop\\CorpMessageSite-master\\Messendger\\Program.cs",
               "RelativeToolTip": "Messendger\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAswBsAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T13:12:55.515Z"
+              "WhenOpened": "2025-04-09T13:12:55.515Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -13,7 +13,7 @@
           "Microsoft.EntityFrameworkCore.Design": "9.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.4",
-          "bootstrap": "5.3.3"
+          "bootstrap": "5.3.5"
         },
         "runtime": {
           "Messendger.dll": {}
@@ -54,7 +54,7 @@
           }
         }
       },
-      "bootstrap/5.3.3": {},
+      "bootstrap/5.3.5": {},
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
@@ -1121,12 +1121,12 @@
       "path": "azure.identity/1.11.4",
       "hashPath": "azure.identity.1.11.4.nupkg.sha512"
     },
-    "bootstrap/5.3.3": {
+    "bootstrap/5.3.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-iQohLXwneNPDyW4x24mKQ90qGwT5WTtNl3KybL0koTluJPjKYxFCU/NTLHsJiWR2n7VmnwcpAgr8TR42KNmPOg==",
-      "path": "bootstrap/5.3.3",
-      "hashPath": "bootstrap.5.3.3.nupkg.sha512"
+      "sha512": "sha512-fx+DwbG2Q9B1f+r95NVoGoIXCiumHnH8TBF45bSepHFl2PZYNYy5/EruA9vQpQkVaMDXsqAp2sUVvs2U6Avm3g==",
+      "path": "bootstrap/5.3.5",
+      "hashPath": "bootstrap.5.3.5.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
