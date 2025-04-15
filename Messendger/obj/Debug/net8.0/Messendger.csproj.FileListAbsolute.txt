@@ -344,3 +344,4 @@ C:\Users\Anya\Desktop\CorpMessageSite-master\Messendger\obj\Debug\net8.0\refint\
 C:\Users\Anya\Desktop\CorpMessageSite-master\Messendger\obj\Debug\net8.0\Messendger.pdb
 C:\Users\Anya\Desktop\CorpMessageSite-master\Messendger\obj\Debug\net8.0\Messendger.genruntimeconfig.cache
 C:\Users\Anya\Desktop\CorpMessageSite-master\Messendger\obj\Debug\net8.0\ref\Messendger.dll
+C:\Users\rjpby\Desktop\Диплом\Messendger\Messendger\obj\Debug\net8.0\Messendger.sourcelink.json

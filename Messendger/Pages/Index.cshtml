@@ -2,22 +2,9 @@
 @model Messendger.Pages.IndexModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
+
+    ViewBag.Title = "Вход";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Вход</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
-</head>
-<body class="bg-dark text-light">
-    <nav class="navbar bg-danger">
-        <div class="container-fluid">
-            <a class="navbar-brand text-light" href="#">
-                <img src="~/res/image/Sinara.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-center">
-                СТМ | РСП-М
-            </a>
-        </div>
-    </nav>
     <main style="height: 85vh;" class="container d-flex flex-column justify-content-center align-items-center">
         <div class="row">
             <h1 class="text-center">Вход в систему</h1>
@@ -34,12 +21,5 @@
             </form>
         </div>
     </main>
-    <footer class="bg-danger text-white text-center py-1 mt-5">
-        <div class="container">
-            <p>&copy; 2025 Мой сайт. Все права защищены.</p>
-        </div>
-    </footer>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/scripts/InputScript.js"></script>
-</body>
-</html>

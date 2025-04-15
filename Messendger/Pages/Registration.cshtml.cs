@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Messendger.Pages
 {
-    [IgnoreAntiforgeryToken]
+
     public class RegistrationModel : PageModel
     {
         public MessendgerDb db { get; set; }
@@ -63,12 +63,13 @@ namespace Messendger.Pages
         [BindProperty]
         [Required]
         public string NameJob { get; set; }
-        public void OnPostAddSpecialty()
+        public ActionResult OnPostAddSpecialty()
         {
             if (string.IsNullOrWhiteSpace(NameJob))
-                return;
+                return Redirect("/Registration");
             db.Jobs.Add(new Job() { Name =  NameJob });
             db.SaveChanges();
+            return Redirect("/Registration");
         }
     }
 }

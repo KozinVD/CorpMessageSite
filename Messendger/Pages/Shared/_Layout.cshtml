@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/styles/GlobalStyle.css" />
+</head>
+<body class="bg-dark text-light">
+     <nav class="navbar bg-danger">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="#">
+                <img src="~/res/image/Sinara.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-center">
+                СТМ | РСП-М
+            </a>
+        </div>
+    </nav>
+    <div class="mainContent">
+        @RenderBody()
+    </div>
+    <footer class="bg-danger text-white text-center py-1">
+        <div class="container">
+            <p>&copy; 2025 Мой сайт. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

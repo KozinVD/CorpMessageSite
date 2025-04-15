@@ -1,4 +1,5 @@
 using Messendger.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +23,23 @@ namespace Messendger
             app.MapGet("/db", (MessendgerDb db) =>
             {
                 return db.Users;
+            });
+            
+            app.MapGet("/newRole/{nameRole}", [Authorize] async (string nameRole, RoleManager<IdentityRole> roleManager) =>
+            {
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(nameRole))
+                        return "Ты тупой?";
+                    await roleManager.CreateAsync(new IdentityRole() { Name = nameRole, NormalizedName = nameRole });
+                    return "Готово!";
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ошибка!");
+                    Console.WriteLine($"{ex.Message}");
+                    return "ГГ!";
+                }
             });
             //string url = builder.Configuration.GetConnectionString("Url");
             //app.Urls.Add(url);
