@@ -1,4 +1,5 @@
 ﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model Messendger.Pages.ChatMenuModel
 @{
 
@@ -12,7 +13,10 @@
                 <img src="~/res/image/User.png" class="mx-auto text-wrap text-break" style="width: 70%;">
             </div>
             <div class="row">
-                <p class="text-center">Козин Владислав Денисович</p>
+                <p class="text-center" id="userName">@Model.info.Surname @Model.info.Name @Model.info.Lastname</p>
+            </div>
+            <div class="row">
+                <button style="width: 100px;" class="btn me-5 ms-1 btn-dark">Выйти</button>
             </div>
         </div>
         <div class="col-3 bg-secondary">
@@ -46,12 +50,13 @@
                 </div>
             </div>
             <div class="p-3">
-                <form class="mb-3 d-flex">
+                <form class="mb-3 d-flex" method="dialog" onsubmit="sendMess(event)">
                     <input type="text" id="messTxt" class="form-control me-2 border border-2 border-black">
-                    <button class="btn bg-black text-light" type="button" onclick="sendMess()">Отправить</button>
+                    <button class="btn bg-black text-light" type="submit">Отправить</button>
                 </form>
             </div>
         </div>
     </div>
 </main>
-<script src="~/scripts/ChatScript.js"></script>
+<script asp-append-version="true" src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+<script asp-append-version="true" src="~/scripts/ChatScript.js"></script>

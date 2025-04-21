@@ -1,3 +1,4 @@
+using Messendger.Classes;
 using Messendger.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,6 +12,7 @@ namespace Messendger
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddRazorPages();
+            builder.Services.AddSignalR();
             string connection = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<MessendgerDb>(options => options.UseSqlServer(connection));
             builder.Services.AddIdentity<User, IdentityRole>()
@@ -41,6 +43,7 @@ namespace Messendger
                     return "รร!";
                 }
             });
+            app.MapHub<ChatHub>("/chat");
             //string url = builder.Configuration.GetConnectionString("Url");
             //app.Urls.Add(url);
             app.Run();
