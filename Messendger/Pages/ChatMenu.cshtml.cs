@@ -8,18 +8,19 @@ namespace Messendger.Pages
     [Authorize]
     public class ChatMenuModel : PageModel
     {
-        MessendgerDb db;
+        public MessendgerDb db;
         public ChatMenuModel(MessendgerDb db)
         {
             this.db = db;
 
         }
         public UserInfo info { get; set; }
+        public string IdUser { get; set; }
         
         public void OnGet()
         {
-            info = db.UserInfos.Find(db.Users
-    .Where(x => x.UserName == User.Identity.Name).First().Id);
+            IdUser = db.Users.Where(x => x.UserName == User.Identity.Name).First().Id;
+            info = db.UserInfos.Find(IdUser);
         }
     }
 }

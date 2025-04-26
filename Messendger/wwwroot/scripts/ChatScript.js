@@ -4,6 +4,7 @@
 
 function changeChat(element) {
     const activeChat = document.querySelector(".active");
+    if (activeChat !== null)
     activeChat.classList.remove("active");
     element.classList.add("active");
     const messContainer = document.querySelector(".messcont");
@@ -20,8 +21,8 @@ function sendMess(e) {
     const txtMes = document.getElementById("messTxt").value;
     document.getElementById("messTxt").value = "";
     messContainer.scrollTop = messContainer.scrollHeight;
-    //Вставить функцию отправки на сервер
-    hubConnection.invoke("Send", txtMes, UserName) // отправка данных серверу
+    //Функция отправки на сервер
+    hubConnection.invoke("Send", txtMes, UserName)
         .catch(function (err) {
             return console.error(err.toString());
         });

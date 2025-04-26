@@ -20,11 +20,25 @@
             </div>
         </div>
         <div class="col-3 bg-secondary">
-            <div class="list-group mt-3 listChat" id="listChat">
-                <button type="button" class="list-group-item list-group-item-action active d-flex align-items-center mb-2" onclick="changeChat(this)">
-                    <img src="~/res/image/User.png" class="me-3" width="75px">Асташков Глеб<span class="badge bg-danger rounded-pill ms-auto">1</span>
-                </button>
-            </div>
+            @{
+                var ChatsUser = Model.db.ChatParticipants.Where(x => x.IdUser == Model.IdUser).ToList();
+                foreach (var chat in ChatsUser)
+                {
+                    var Chat = Model.db.Chats.Find(chat.IdChat);
+                    string nameChat = Chat.Name;
+                    if (nameChat == null)
+                    {
+                        string idUser = Model.db.ChatParticipants.Where(x => x.IdChat == Chat.Id).Where(y => y.IdUser != Model.IdUser).First().IdUser;
+                        nameChat = Model.db.UserInfos.Find(idUser).Surname + " " + Model.db.UserInfos.Find(idUser).Name;
+                    }
+                    //Вывод чатов
+                    <div class="list-group mt-3 listChat" id="listChat">
+                        <button type="button" class="list-group-item list-group-item-action d-flex align-items-center mb-2" onclick="changeChat(this)">
+                            <img src="~/res/image/User.png" class="me-3" width="75px">@nameChat<span class="badge bg-danger rounded-pill ms-auto">1</span>
+                        </button>
+                    </div>
+                }
+            }
         </div>
         <div class="col-8 bg-light d-flex flex-column text-dark">
             <div class="flex-grow-1 m-3 border border-5 border-black p-3 messcont">
@@ -33,18 +47,6 @@
                     <div class="timeMes">18:52 15.04.2025</div>
                 </div>
                 <div class="mess">
-                    <div class="textMes">Привет!</div>
-                    <div class="timeMes">18:52 15.04.2025</div>
-                </div>
-                <div class="mess self">
-                    <div class="textMes">Привет!</div>
-                    <div class="timeMes">18:52 15.04.2025</div>
-                </div>
-                <div class="mess">
-                    <div class="textMes">Привет!</div>
-                    <div class="timeMes">18:52 15.04.2025</div>
-                </div>
-                <div class="mess self">
                     <div class="textMes">Привет!</div>
                     <div class="timeMes">18:52 15.04.2025</div>
                 </div>
