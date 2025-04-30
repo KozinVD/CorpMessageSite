@@ -12,6 +12,7 @@ public partial class Message
     public string IdUser { get; set; }
 
     public int IdChat { get; set; }
+    public DateTime TimeSend { get; set; }
 
     public virtual ICollection<File> Files { get; set; } = new List<File>();
 

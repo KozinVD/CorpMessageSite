@@ -2,6 +2,8 @@ using Messendger.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Messendger.Pages
 {
@@ -15,12 +17,26 @@ namespace Messendger.Pages
 
         }
         public UserInfo info { get; set; }
-        public string IdUser { get; set; }
-        
-        public void OnGet()
+        public List<ViewModelChat> Chats { get; set; } = [];
+
+        public async Task OnGetAsync()
         {
-            IdUser = db.Users.Where(x => x.UserName == User.Identity.Name).First().Id;
-            info = db.UserInfos.Find(IdUser);
+            info = await db.UserInfos.Where(x => x.IdNavigation.UserName == User.Identity.Name).FirstOrDefaultAsync();
+            Chats = await db.ChatParticipants.Include(y => y.IdChatNavigation)
+            .Where(x => x.IdUser == info.Id)
+            .Select(chat =>
+                new ViewModelChat
+                {
+                    Id = chat.IdChat,
+                    NameChat = chat.IdChatNavigation.Name,
+                    Participants = chat.IdChatNavigation.ChatParticipants.Where(x => x.IdUser != info.Id).Select(p => p.IdUserNavigation.UserInfo.Surname + " " + p.IdUserNavigation.UserInfo.Name).ToList()
+                }).ToListAsync();
         }
+    }
+    public class ViewModelChat
+    {
+        public int Id { get; set; }
+        public string NameChat { get; set; }
+        public List<string> Participants { get; set; }
     }
 }

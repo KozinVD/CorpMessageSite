@@ -201,6 +201,10 @@ namespace Messendger.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("text");
 
+                    b.Property<DateTime>("TimeSend")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("timeSend");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdChat");
@@ -208,41 +212,6 @@ namespace Messendger.Migrations
                     b.HasIndex("IdUser");
 
                     b.ToTable("Messages");
-                });
-
-            modelBuilder.Entity("Messendger.Entities.Task", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateEnd")
-                        .HasColumnType("datetime")
-                        .HasColumnName("date_end");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("description");
-
-                    b.Property<string>("IdUser")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnName("id_user");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdUser");
-
-                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("Messendger.Entities.User", b =>
@@ -311,8 +280,11 @@ namespace Messendger.Migrations
             modelBuilder.Entity("Messendger.Entities.UserImage", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -360,6 +332,41 @@ namespace Messendger.Migrations
                     b.HasIndex("IdJob");
 
                     b.ToTable("UserInfo", (string)null);
+                });
+
+            modelBuilder.Entity("Messendger.Entities.UserTask", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateEnd")
+                        .HasColumnType("datetime")
+                        .HasColumnName("date_end");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("description");
+
+                    b.Property<string>("IdUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("id_user");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdUser");
+
+                    b.ToTable("UserTasks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -570,18 +577,6 @@ namespace Messendger.Migrations
                     b.Navigation("IdUserNavigation");
                 });
 
-            modelBuilder.Entity("Messendger.Entities.Task", b =>
-                {
-                    b.HasOne("Messendger.Entities.User", "IdUserNavigation")
-                        .WithMany("Tasks")
-                        .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_Tasks_Users");
-
-                    b.Navigation("IdUserNavigation");
-                });
-
             modelBuilder.Entity("Messendger.Entities.User", b =>
                 {
                     b.HasOne("Messendger.Entities.UserImage", "IdPhotoNavigation")
@@ -611,6 +606,18 @@ namespace Messendger.Migrations
                     b.Navigation("IdJobNavigation");
 
                     b.Navigation("IdNavigation");
+                });
+
+            modelBuilder.Entity("Messendger.Entities.UserTask", b =>
+                {
+                    b.HasOne("Messendger.Entities.User", "IdUserNavigation")
+                        .WithMany("Tasks")
+                        .HasForeignKey("IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Tasks_Users");
+
+                    b.Navigation("IdUserNavigation");
                 });
 
             modelBuilder.Entity("Messendger.Entities.Chat", b =>

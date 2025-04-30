@@ -22,11 +22,18 @@ namespace Messendger
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapRazorPages();
+
             app.MapGet("/db", (MessendgerDb db) =>
             {
                 return db.Users;
             });
-            
+
+            app.MapGet("/api/message/{id}",[Authorize] async  (int id, MessendgerDb db) =>
+            {
+                return await db.Messages.Where(x => x.IdChat == id).ToListAsync();
+            });
+
+            //Добавление роли
             app.MapGet("/newRole/{nameRole}", [Authorize] async (string nameRole, RoleManager<IdentityRole> roleManager) =>
             {
                 try
@@ -43,7 +50,11 @@ namespace Messendger
                     return "ГГ!";
                 }
             });
+
+            //Конечная точка для Чата
             app.MapHub<ChatHub>("/chat");
+
+
             //string url = builder.Configuration.GetConnectionString("Url");
             //app.Urls.Add(url);
             app.Run();

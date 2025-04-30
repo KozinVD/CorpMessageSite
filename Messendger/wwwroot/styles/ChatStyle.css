@@ -1,6 +1,7 @@
 ﻿.messcont {
     overflow-y: auto;
     display: flex;
+    max-height: 90vh;
     flex-direction: column;
 }
 
@@ -38,4 +39,7 @@
 }
 #messTxt{
     border-color: black;
+}
+.userMes {
+    font-size: 10px;
 }

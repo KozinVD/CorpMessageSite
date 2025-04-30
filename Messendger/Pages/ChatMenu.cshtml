@@ -1,11 +1,12 @@
 ﻿@page
+@using Microsoft.EntityFrameworkCore
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model Messendger.Pages.ChatMenuModel
 @{
 
     ViewBag.Title = "Чаты";
 }
-<link href="styles/ChatStyle.css" rel="stylesheet" />
+<link href="styles/ChatStyle.css" rel="stylesheet" asp-append-version="true" />
 <main class="container">
     <div class="row">
         <div class="col-1 bg-danger min-vh-100">
@@ -13,48 +14,37 @@
                 <img src="~/res/image/User.png" class="mx-auto text-wrap text-break" style="width: 70%;">
             </div>
             <div class="row">
-                <p class="text-center" id="userName">@Model.info.Surname @Model.info.Name @Model.info.Lastname</p>
+                <p class="text-center" data-idUser="@Model.info.Id" id="userName">@Model.info.Surname @Model.info.Name @Model.info.Lastname</p>
             </div>
             <div class="row">
                 <button style="width: 100px;" class="btn me-5 ms-1 btn-dark">Выйти</button>
             </div>
         </div>
         <div class="col-3 bg-secondary">
+            <div class="list-group mt-3 listChat" id="listChat">
             @{
-                var ChatsUser = Model.db.ChatParticipants.Where(x => x.IdUser == Model.IdUser).ToList();
-                foreach (var chat in ChatsUser)
+                //Вывод чатов
+                foreach (var chat in Model.Chats)
                 {
-                    var Chat = Model.db.Chats.Find(chat.IdChat);
-                    string nameChat = Chat.Name;
-                    if (nameChat == null)
-                    {
-                        string idUser = Model.db.ChatParticipants.Where(x => x.IdChat == Chat.Id).Where(y => y.IdUser != Model.IdUser).First().IdUser;
-                        nameChat = Model.db.UserInfos.Find(idUser).Surname + " " + Model.db.UserInfos.Find(idUser).Name;
-                    }
-                    //Вывод чатов
-                    <div class="list-group mt-3 listChat" id="listChat">
-                        <button type="button" class="list-group-item list-group-item-action d-flex align-items-center mb-2" onclick="changeChat(this)">
-                            <img src="~/res/image/User.png" class="me-3" width="75px">@nameChat<span class="badge bg-danger rounded-pill ms-auto">1</span>
+                    string name = string.Join(' ', chat.Participants);
+                    if (chat.NameChat != null)
+                        name = chat.NameChat;
+
+                        <button type="button" data-id-chat="@chat.Id" class="list-group-item list-group-item-action d-flex align-items-center mb-2" onclick="changeChat(this)">
+                            <img src="~/res/image/User.png" class="me-3" width="75px">@name<span class="badge bg-danger rounded-pill ms-auto kolmess"></span>
                         </button>
-                    </div>
                 }
             }
+            </div>
         </div>
         <div class="col-8 bg-light d-flex flex-column text-dark">
             <div class="flex-grow-1 m-3 border border-5 border-black p-3 messcont">
-                <div class="mess self">
-                    <div class="textMes">Привет!</div>
-                    <div class="timeMes">18:52 15.04.2025</div>
-                </div>
-                <div class="mess">
-                    <div class="textMes">Привет!</div>
-                    <div class="timeMes">18:52 15.04.2025</div>
-                </div>
+
             </div>
             <div class="p-3">
-                <form class="mb-3 d-flex" method="dialog" onsubmit="sendMess(event)">
-                    <input type="text" id="messTxt" class="form-control me-2 border border-2 border-black">
-                    <button class="btn bg-black text-light" type="submit">Отправить</button>
+                <form class="mb-3 d-flex" method="dialog" onsubmit="sendMess(event)" autocomplete="off">
+                    <input type="text" id="messTxt" class="form-control me-2 border border-2 border-black" disabled>
+                    <button class="btn bg-black text-light" type="submit" disabled>Отправить</button>
                 </form>
             </div>
         </div>

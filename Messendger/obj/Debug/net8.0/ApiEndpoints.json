@@ -1,6 +1,30 @@
 [
   {
     "ContainingType": "Messendger.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_2",
+    "RelativePath": "api/message/{id}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Messendger.Entities.Message, Messendger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Messendger.Program\u002B\u003C\u003Ec",
     "Method": "\u003CMain\u003Eb__0_1",
     "RelativePath": "db",
     "HttpMethod": "GET",
@@ -19,7 +43,7 @@
   },
   {
     "ContainingType": "Messendger.Program\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_2",
+    "Method": "\u003CMain\u003Eb__0_3",
     "RelativePath": "newRole/{nameRole}",
     "HttpMethod": "GET",
     "IsController": false,

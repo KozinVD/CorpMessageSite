@@ -25,7 +25,7 @@ public partial class User : IdentityUser
 
     public virtual ICollection<Message> Messages { get; set; } = new List<Message>();
 
-    public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
+    public virtual ICollection<UserTask> Tasks { get; set; } = new List<UserTask>();
 
     public virtual UserInfo? UserInfo { get; set; }
 }

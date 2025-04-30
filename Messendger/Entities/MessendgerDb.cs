@@ -31,7 +31,7 @@ public partial class MessendgerDb : IdentityDbContext<User>
 
     public virtual DbSet<Message> Messages { get; set; }
 
-    public virtual DbSet<Task> Tasks { get; set; }
+    public virtual DbSet<UserTask> UserTasks { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -131,6 +131,7 @@ public partial class MessendgerDb : IdentityDbContext<User>
             entity.Property(e => e.Text)
                 .HasMaxLength(100)
                 .HasColumnName("text");
+            entity.Property(e => e.TimeSend).HasColumnName("timeSend");
 
             entity.HasOne(d => d.IdChatNavigation).WithMany(p => p.Messages)
                 .HasForeignKey(d => d.IdChat)
@@ -141,7 +142,7 @@ public partial class MessendgerDb : IdentityDbContext<User>
                 .HasConstraintName("FK_Messages_Users");
         });
 
-        modelBuilder.Entity<Task>(entity =>
+        modelBuilder.Entity<UserTask>(entity =>
         {
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.DateEnd)
@@ -173,7 +174,7 @@ public partial class MessendgerDb : IdentityDbContext<User>
         modelBuilder.Entity<UserImage>(entity =>
         {
             entity.Property(e => e.Id)
-                .ValueGeneratedNever()
+                .ValueGeneratedOnAdd()
                 .HasColumnName("id");
             entity.Property(e => e.Name).HasColumnName("name");
         });
