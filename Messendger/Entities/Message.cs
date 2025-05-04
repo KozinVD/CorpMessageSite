@@ -13,6 +13,7 @@ public partial class Message
 
     public int IdChat { get; set; }
     public DateTime TimeSend { get; set; }
+    public bool IsRead { get; set; }
 
     public virtual ICollection<File> Files { get; set; } = new List<File>();
 

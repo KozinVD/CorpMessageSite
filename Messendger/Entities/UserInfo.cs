@@ -20,4 +20,11 @@ public partial class UserInfo
     public virtual Job IdJobNavigation { get; set; } = null!;
 
     public virtual User IdNavigation { get; set; } = null!;
+    public string FullName
+    {
+        get
+        {
+            return Surname + " " + Name + " " + Lastname;
+        }
+    }
 }

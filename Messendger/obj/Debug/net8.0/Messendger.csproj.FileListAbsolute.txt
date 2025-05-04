@@ -461,3 +461,4 @@ C:\Users\rjpby\Desktop\Диплом\Messendger\Messendger\bin\Debug\net8.0\runti
 C:\Users\rjpby\Desktop\Диплом\Messendger\Messendger\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\rjpby\Desktop\Диплом\Messendger\Messendger\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\rjpby\Desktop\Диплом\Messendger\Messendger\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\rjpby\Desktop\Диплом\Messendger\Messendger\bin\Debug\net8.0\libman.json
