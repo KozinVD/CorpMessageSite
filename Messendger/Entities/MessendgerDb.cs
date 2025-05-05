@@ -128,10 +128,9 @@ public partial class MessendgerDb : IdentityDbContext<User>
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.IdChat).HasColumnName("id_chat");
             entity.Property(e => e.IdUser).HasColumnName("id_user");
-            entity.Property(e => e.Text)
-                .HasMaxLength(100)
-                .HasColumnName("text");
+            entity.Property(e => e.Text).HasColumnName("text");
             entity.Property(e => e.TimeSend).HasColumnName("timeSend");
+            entity.Property(e => e.IsRead).HasColumnName("isRead");
 
             entity.HasOne(d => d.IdChatNavigation).WithMany(p => p.Messages)
                 .HasForeignKey(d => d.IdChat)

@@ -98,7 +98,7 @@
                         {
                             <div class="mess self">
                                 <div class="userMes">@message.Sender</div>
-                                <div class="textMes">@message.Text</div>
+                                <div class="textMes">@Html.Raw(message.Text)</div>
                                 <div class="timeMes">@message.TimeSend.Hour:@message.TimeSend.Minute @message.TimeSend.Date.ToShortDateString()</div>
                             </div>
                         }
@@ -106,7 +106,7 @@
                         {
                             <div class="mess">
                                 <div class="userMes">@message.Sender</div>
-                                <div class="textMes">@message.Text</div>
+                                <div class="textMes">@Html.Raw(message.Text)</div>
                                 <div class="timeMes">@message.TimeSend.Hour:@message.TimeSend.Minute @message.TimeSend.Date.ToShortDateString()</div>
                             </div>
                         }
@@ -114,16 +114,26 @@
                 }
             </div>
             <div class="p-3">
-                <form class="mb-3 d-flex" method="dialog" onsubmit="sendMess(event)" autocomplete="off">
+                <form class="mb-3 d-flex" method="dialog" id="formSend" onsubmit="sendMess(event)" enctype="multipart/form-data" autocomplete="off">
                         @if (Model.IdCurChat == 0)
                         {
-                            <input type="text" id="messTxt" class="form-control me-2 border border-2 border-black" disabled>
-                            <button class="btn bg-black text-light" type="submit" id="sendBtn" disabled>Отправить</button>
+                        <input type="text" id="messTxt" class="form-control  me-2 border border-2 border-black" name="textMessage" disabled>
+                            <button class="btn bg-black text-light"  type="submit" id="sendBtn" disabled>Отправить</button>
+                        <label class="file-button btn border-black mx-2" id="filebtn">
+                            <img src="~/res/image/screpka.svg" alt="Скрепка">
+                            <input type="file" name="sendFile" id="fileSend" onchange="filesend(this)" disabled />
+                        </label>
+                        <button type="button" onclick="cancelbtn(this)" id="canbtn" class="d-none btn ms-1 bg-black text-light">✖</button>
                         }
                         else
                         {
-                            <input type="text" id="messTxt" class="form-control me-2 border border-2 border-black" >
+                        <input type="text" id="messTxt" class="form-control me-2 border border-2 border-black" name="textMessage">
                             <button class="btn bg-black text-light" type="submit" id="sendBtn" >Отправить</button>
+                        <label class="file-button  btn border-black mx-2" id="filebtn">
+                            <img src="~/res/image/screpka.svg" alt="Скрепка">
+                            <input type="file" name="sendFile" id="fileSend" onchange="filesend(this)" />
+                        </label>
+                        <button type="button" onclick="cancelbtn(this)" id="canbtn" class="btn d-none ms-1 bg-black text-light">✖</button>
                         }
                 </form>
             </div>
@@ -205,18 +215,31 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
                 <div class="modal-body">
-                <div class="btn-group" role="group">
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                    <label class="btn btn-outline-primary" for="btnradio1">Ваши друзья</label>
+                <div class="btn-group mb-2" style="display: flex; justify-content: center; align-items: center;" role="group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnFriend" onclick="changeList(this)" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="btnFriend">Ваши друзья</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btnradio2">Входящие заявки</label>
+                    <input type="radio" class="btn-check" name="btnradio" onclick="changeList(this)" id="btnVxodReq" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnVxodReq">Входящие заявки</label>
 
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="btnradio3">Исходящие заявки</label>
+                    <input type="radio" class="btn-check " name="btnradio" onclick="changeList(this)" id="btnIsxReq" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnIsxReq">Исходящие заявки</label>
                 </div>
-                <ul class="list-group" id="searchList" style="overflow-y: auto;max-height: 40vh;">
-
+                <ul class="list-group" id="friendList" style="overflow-y: auto;max-height: 40vh;">
+                    @foreach (var friend in Model.Friends)
+                    {
+                        <li class="list-group-item mb-1  border border-warning">
+                            <div class="d-flex align-items-center">
+                                <img class="me-3" width="75px" src="@friend.PathPhoto">
+                                <div class="me-3 d-flex flex-column">
+                                    <span class="row">@friend.Surname @friend.Name @friend.Lastname</span>
+                                    <span class="row">@friend.JobName</span>
+                                </div>
+                                <button class="btn border border-danger ms-auto me-2" type="button" onclick="chatbtn(this)" data-user="@friend.Id" data-chat="@friend.IdChat"><img style="width: 20px;" alt="Смс" src="/res/image/mess.svg" /></button>
+                                <button class="btn border border-danger me-1" type="button" onclick="delbtnfr(this)" data-user="@friend.Id"><img style="width: 20px;" alt="Удалить" src="/res/image/trash.svg" /></button>
+                            </div>
+                        </li>
+                    }
                 </ul>
                 </div>
                 <div class="modal-footer">

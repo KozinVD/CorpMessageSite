@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using System;
+using System.Linq;
 
 namespace Messendger.Classes
 {
@@ -25,7 +27,7 @@ namespace Messendger.Classes
                 UserInfo senderInfo = await db.UserInfos.FindAsync(idSender);
                 string sender = senderInfo.Surname + " " + senderInfo.Name;
                 //Сохранение сообщения в бд
-                Message newMes = new Message() {Text = message, IdUser = idSender, IdChat = idChat, TimeSend = DateTime.Parse(timeMessage)};
+                Entities.Message newMes = new Entities.Message() {Text = message, IdUser = idSender, IdChat = idChat, TimeSend = DateTime.Parse(timeMessage)};
                 db.Messages.Add(newMes);
                 await db.SaveChangesAsync();
                 //Отправление сообщения другим участникам
@@ -33,16 +35,25 @@ namespace Messendger.Classes
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.InnerException.GetType().FullName);
+                Console.WriteLine(ex.GetType().FullName);
+                Console.WriteLine(ex.InnerException.Message);
                 Console.WriteLine("Ошибка");
-                Console.WriteLine($"{idChatS} {message} {timeMessage}"); 
+                Console.WriteLine($"{idChatS} {message} {timeMessage}");
+
             }
         }
         public async Task CreateNewChat(string[] UsersId)
         {
             string idSender = Context.UserIdentifier;
-            string path = "/res/images/User.png";
+
+            string path = "/res/image/User.png";
             if (UsersId.Length == 1)
             {
+                if (await ChatExsist(UsersId, idSender, db))
+                    { return; }
                 User user = db.Users.Include(u => u.IdPhotoNavigation).Where(u => u.Id == idSender).First();
                 if (user.IdPhotoNavigation != null)
                     path = $"/userImages/{user.IdPhotoNavigation.Name}";
@@ -84,6 +95,26 @@ namespace Messendger.Classes
                 await Clients.Users(user).SendAsync("createChat", newChat.Id, name, newChat.IsGroup, path);
             }
                 await Clients.Users(idSender).SendAsync("createChatO", newChat.Id);
+        }
+        public static async Task<bool> ChatExsist(string[] ids, string idSender, MessendgerDb db)
+        {
+            var targetUserIds = ids.Append(idSender).Distinct().OrderBy(id => id).ToList();
+            List<Chat> chatUser = await db.ChatParticipants.Include(x => x.IdChatNavigation).ThenInclude(x => x.ChatParticipants).Where(x => x.IdUser == idSender).Select(x => x.IdChatNavigation).ToListAsync();
+
+            foreach (var chat in chatUser)
+            {
+                var chatUserIds = chat.ChatParticipants
+            .Select(cp => cp.IdUser)
+            .Distinct()
+            .OrderBy(id => id)
+            .ToList();
+                if (chatUserIds.SequenceEqual(targetUserIds))
+                {
+                    // Такой чат уже существует
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

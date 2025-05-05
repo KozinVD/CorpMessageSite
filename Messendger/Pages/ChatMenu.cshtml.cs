@@ -22,6 +22,7 @@ namespace Messendger.Pages
         public UserInfo info { get; set; }
         public List<ViewModelChat> Chats { get; set; } = [];
         public List<itemMessage> Messages { get; set; } = [];
+        public List<ViewModelFriend> Friends { get; set; } = [];
 
         public async Task OnGetAsync()
         {
@@ -45,6 +46,24 @@ namespace Messendger.Pages
                     isGroup = chat.IdChatNavigation.IsGroup,
                     PhotoPath = ViewModelChat.GetPath(chat.IdChatNavigation, userId)
                 }).ToListAsync();
+            Friends = await db.Friends.Include(f => f.IdFriendNavigation).ThenInclude(u => u.UserInfo).ThenInclude(u => u.IdJobNavigation)
+    .Include(f => f.IdFriendNavigation).ThenInclude(u => u.IdPhotoNavigation)
+    .Include(f => f.IdFriendNavigation).ThenInclude(u => u.ChatParticipants)
+    .Where(f => f.IdUser == userId).Select(f => new ViewModelFriend
+    {
+        Id = f.IdFriend,
+        Name = f.IdFriendNavigation.UserInfo.Name,
+        Surname = f.IdFriendNavigation.UserInfo.Surname,
+        Lastname = f.IdFriendNavigation.UserInfo.Lastname,
+        JobName = f.IdFriendNavigation.UserInfo.IdJobNavigation.Name,
+        PathPhoto = ViewModelFriend.GetPath(f.IdFriendNavigation.IdPhotoNavigation),
+        IdChat = 0
+    }).ToListAsync();
+            foreach (var fr in Friends)
+            {
+                int id = await ViewModelFriend.GetChatId(userId, fr.Id, db);
+                fr.IdChat = id;
+            }
         }
     }
     public class ViewModelChat
@@ -65,4 +84,32 @@ namespace Messendger.Pages
             return "/res/image/User.png";
         }
     }
+    public class ViewModelFriend
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Lastname { get; set; }
+        public string JobName { get; set; }
+        public string PathPhoto { get; set; }
+        public int IdChat { get; set; }
+        public static string GetPath(UserImage image)
+        {
+            if (image == null)
+                return "/res/image/User.png";
+            return $"/userImages/{image.Name}";
+        }
+        public static async Task<int> GetChatId(string curId, string idFriend, MessendgerDb db)
+        {
+            List<Chat> chatsUser = await db.ChatParticipants.Include(x => x.IdChatNavigation).Include(x => x.IdChatNavigation.ChatParticipants).Where(x => x.IdUser == curId).Select(x => x.IdChatNavigation).ToListAsync();
+            foreach (var chat in chatsUser)
+            {
+                ChatParticipant chatF = chat.ChatParticipants.Where(x => x.IdUser == idFriend).FirstOrDefault();
+                if (chatF != null)
+                    return chatF.IdChat;
+            }
+            return 0;
+        }
+    }
+
 }

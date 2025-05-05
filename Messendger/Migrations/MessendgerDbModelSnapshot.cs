@@ -195,6 +195,10 @@ namespace Messendger.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("id_user");
 
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit")
+                        .HasColumnName("isRead");
+
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasMaxLength(100)

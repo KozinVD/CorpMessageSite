@@ -193,8 +193,16 @@
       "PackagePath": "staticwebassets\\res\\image\\mess.svg"
     },
     {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\screpka.svg",
+      "PackagePath": "staticwebassets\\res\\image\\screpka.svg"
+    },
+    {
       "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\search.svg",
       "PackagePath": "staticwebassets\\res\\image\\search.svg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\trash.svg",
+      "PackagePath": "staticwebassets\\res\\image\\trash.svg"
     },
     {
       "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\scripts\\ChatScript.js",
@@ -221,6 +229,34 @@
       "PackagePath": "staticwebassets\\styles\\GlobalStyle.css"
     },
     {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\104710a1-5d20-4e61-908d-5ae7e0fa28d4IVOXYGEN—Circus.mp3",
+      "PackagePath": "staticwebassets\\userFile\\104710a1-5d20-4e61-908d-5ae7e0fa28d4IVOXYGEN—Circus.mp3"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\5f4db0b8-01e5-4227-96ea-1c1b1421a5c3Диграмма активнсти.vsdx",
+      "PackagePath": "staticwebassets\\userFile\\5f4db0b8-01e5-4227-96ea-1c1b1421a5c3Диграмма активнсти.vsdx"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\6ee80046-6180-4166-974f-0b33ba9024c9Empty.gif",
+      "PackagePath": "staticwebassets\\userFile\\6ee80046-6180-4166-974f-0b33ba9024c9Empty.gif"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\821410f9-ef65-40f6-a9ec-05f967957a23Fortnite 2024.11.27 - 02.07.08.15.Поражение.DVR.mp4",
+      "PackagePath": "staticwebassets\\userFile\\821410f9-ef65-40f6-a9ec-05f967957a23Fortnite 2024.11.27 - 02.07.08.15.Поражение.DVR.mp4"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\9ef31c49-9f92-4d1a-b467-357d392b2acepz.docx",
+      "PackagePath": "staticwebassets\\userFile\\9ef31c49-9f92-4d1a-b467-357d392b2acepz.docx"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\c6cb37e2-8284-4209-beb1-0f4ed58bcaedPhone.gif",
+      "PackagePath": "staticwebassets\\userFile\\c6cb37e2-8284-4209-beb1-0f4ed58bcaedPhone.gif"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\eb1e97a8-c4a3-4eec-86a5-eae658171291ПП02 Варганова ИС-401.zip",
+      "PackagePath": "staticwebassets\\userFile\\eb1e97a8-c4a3-4eec-86a5-eae658171291ПП02 Варганова ИС-401.zip"
+    },
+    {
       "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userImages\\Empty.gif",
       "PackagePath": "staticwebassets\\userImages\\Empty.gif"
     },
@@ -235,6 +271,10 @@
     {
       "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userImages\\photo_2025-03-20_00-14-44.jpg",
       "PackagePath": "staticwebassets\\userImages\\photo_2025-03-20_00-14-44.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userImages\\photo_2025-05-05_00-39-11.jpg",
+      "PackagePath": "staticwebassets\\userImages\\photo_2025-05-05_00-39-11.jpg"
     },
     {
       "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userImages\\qitjBR4Jvzw.jpg",
