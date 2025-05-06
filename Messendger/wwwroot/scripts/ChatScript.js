@@ -8,6 +8,31 @@ hubConnection.start()
         console.log("Успешно");
     });
 
+function loadfriend() {
+    const partList = document.getElementById("partList");
+    partList.innerHTML = "";
+    fetch("/api/getFriend").then(response => response.json())
+        .then((jsons) => {
+            jsons.forEach((json) => {
+                partList.innerHTML += `<li class="list-group-item mb-1  border border-warning">
+                                <div class="form-check">
+                                <input class="form-check-input" data-friend="${json.id}" type="checkbox" value="" id="check${json.id}">
+                                    <label class="form-check-label" for="check${json.id}">
+                                        <div class="d-flex align-items-center">
+                                            <img class="me-3" width="75px" src="${json.photoPath}">
+                                            <div class="me-3 d-flex flex-column">
+                                                <span class="row">${json.surname} ${json.name} ${json.lastname}</span>
+                                                <span class="row">${json.jobName}</span></div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                </div>
+                            </li>`;
+            });
+        });
+}
+
 //Функиця изменения чата и прогрузки сообщения
 async function changeChat(element) {
     const id = element.dataset.idChat;
@@ -19,6 +44,16 @@ async function changeChat(element) {
         activeChat.classList.remove("active");
     }
     element.classList.add("active");
+    const editbtn = document.getElementById("btnEditChat")
+    const delbtn = document.getElementById("btnDelChat")
+    document.getElementById("nameChat").classList.remove("d-none");
+    document.getElementById("nameChat").innerText = element.innerText;
+    const img = element.querySelector('img');
+    const showButtons = !element.querySelector('img');
+    if (delbtn && editbtn) {
+        editbtn.classList.toggle("d-none", !showButtons);
+        delbtn.classList.toggle("d-none", !showButtons);
+    }
     const messContainer = document.querySelector(".messcont");
     messContainer.innerHTML = "";
     //Фукнция загрузки сообщений
@@ -49,6 +84,7 @@ async function changeChat(element) {
 //Функция отправки сообщения
 function sendMess(e) {
     e.preventDefault();
+    
     const forma = document.getElementById("formSend");
     const filelist = document.getElementById("fileSend");
     const activeElement = document.querySelector(".active");
@@ -68,6 +104,8 @@ function sendMess(e) {
             method: 'POST',
             body: formData
         }).then((res) => { res.text(); console.log(res.status) }).then(text => console.log(text));
+        document.getElementById("canbtn").click();
+
         return;
     }
     //Функция отправки на сервер
@@ -80,11 +118,16 @@ function sendMess(e) {
     newMess.classList.add("self");
     newMess.innerHTML = `<div class="userMes">${name}</div><div class="textMes">${txtMes}</div><div class="timeMes">${timeMess.getHours()}:${timeMess.getMinutes()} ${timeMess.toLocaleDateString()}</div>`;
     messContainer.appendChild(newMess);
+    audio.play();
     messContainer.scrollTop = messContainer.scrollHeight;
 }
+var audio = new Audio('/res/sounds/mesSound.mp3');
+audio.preload = 'auto';
+audio.volume = 0.5;
 
 //Функция принятия сообщения
 hubConnection.on("Receive", function (idChat, sender, message, timeMessage) {
+    audio.play();
     const activeElement = document.querySelector(".active");
     let chatId = 0;
     if (activeElement != null)
@@ -104,6 +147,7 @@ hubConnection.on("Receive", function (idChat, sender, message, timeMessage) {
     messContainer.scrollTop = messContainer.scrollHeight;
 });
 hubConnection.on("ReceiveFileY", function (idChat, sender, message, timeMessage) {
+    audio.play();
     const activeElement = document.querySelector(".active");
     let chatId = 0;
     if (activeElement != null)
@@ -124,18 +168,113 @@ hubConnection.on("ReceiveFileY", function (idChat, sender, message, timeMessage)
     messContainer.scrollTop = messContainer.scrollHeight;
 });
 
+//Функция удаления чата
+hubConnection.on("DeleteChat", function (idChat) {
+    const button = document.querySelector(`[data-id-chat="${idChat}"]`);
+    button.remove();
+    document.getElementById("messTxt").setAttribute("disabled", "");
+    document.getElementById("sendBtn").setAttribute("disabled", "");
+    document.getElementById("fileSend").setAttribute("disabled", "");
+    document.getElementById("btnEditChat").classList.add("d-none");
+    document.getElementById("btnDelChat").classList.add("d-none");
+    document.getElementById("nameChat").classList.add("d-none");
+    const messContainer = document.querySelector(".messcont");
+    messContainer.innerHTML = "";
+});
+//Функция вызова удаления чата
+function delChat() {
+    const activeChat = document.querySelector(".active");
+    const id = activeChat.dataset.idChat;
+    hubConnection.invoke("DeleteChat", id)
+        .catch(function (err) {
+            return console.error(err.toString());
+        });
+
+}
+
+async function addNewPart() {
+    list = document.getElementById("newPartChatList");
+    list.innerHTML = "";
+    const activeChat = document.querySelector(".active");
+    const ids = activeChat.dataset.idChat;
+    console.log(ids);
+    await fetch(`/newChatPart/${ids}`).then(response => response.json())
+        .then((jsons) => {
+            jsons.forEach((json) => {
+                list.innerHTML += `<li class="list-group-item mb-1  border border-warning">
+                                    <div class="d-flex align-items-center">
+                                        <img class="me-3" width="75px" src="${json.path}">
+                                        <div class="me-3 d-flex flex-column">
+                                            <span class="row">${json.fullName}</span>
+                                            <span class="row">${json.jobName}</span>
+                                        </div>
+                                <button class="btn border border-danger  ms-auto me-2" type="button" onclick="addPart(this)" data-user="${json.id}">+</button>
+                                    </div>
+                                </li>`;
+            });
+        });
+}
+
+function addPart(element) {
+    const activeChat = document.querySelector(".active");
+    const idChat = activeChat.dataset.idChat;
+    const idUser = element.dataset.user;
+    element.innerText = "✓";
+    element.setAttribute("disabled", "");
+    hubConnection.invoke("AddUserChat", idChat, idUser)
+        .catch(function (err) {
+            return console.error(err.toString());
+        });
+}
+
+//Функция загрузки участников чата
+function loadChatPart() {
+    const listPart = document.getElementById("partChatList");
+    listPart.innerHTML = "";
+    const activeChat = document.querySelector(".active");
+    const idChat = activeChat.dataset.idChat;
+    document.getElementById("nameChatTxt").value = activeChat.innerText;
+    fetch(`/chatPart/${idChat}`).then(response => response.json())
+        .then((jsons) => {
+            jsons.forEach((json) => {
+                listPart.innerHTML += `<li class="list-group-item mb-1  border border-warning">
+                                    <div class="d-flex align-items-center">
+                                        <img class="me-3" width="75px" src="${json.photoPath}">
+                                        <div class="me-3 d-flex flex-column">
+                                            <span class="row">${json.surname} ${json.name} ${json.lastname}</span>
+                                            <span class="row">${json.jobName}</span>
+                                        </div>
+                                <button class="btn border border-danger  ms-auto me-2" type="button" onclick="delUserChat(this)" data-user="${json.id}"><img style="width: 20px;" alt="Удалить" src="/res/image/trash.svg" /></button>
+                                    </div>
+                                </li>`;
+            });
+        });
+}
+//Функция вызова удаления человека из чата
+function delUserChat(element) {
+    const activeChat = document.querySelector(".active");
+    const idChat = activeChat.dataset.idChat;
+    idUser = element.dataset.user;
+    const liEl = element.closest('li');
+    hubConnection.invoke("DeleteChatPart", idChat, idUser)
+        .catch(function (err) {
+            return console.error(err.toString());
+        });
+    liEl.remove();
+}
+
 //Функция создания чата
 hubConnection.on("createChat", function (idChat, nameChat, isGroup, path) {
     console.log(`${idChat} ${nameChat} ${isGroup} ${path} `)
     const chatlist = document.getElementById("listChat");
     if (isGroup) {
-        chatlist.innerHTML += `<button type="button" data-id-chat="${idChat}" class="list-group-item list-group-item-action d-flex align-items-center mb-2" onclick="changeChat(this)">
+        chatlist.innerHTML += `<button type="button" data-id-chat="${idChat}" data-group="${isGroup}" class="list-group-item list-group-item-action mb-2 text-center" onclick="changeChat(this)">
         ${nameChat}
         <span class="badge bg-danger rounded-pill ms-auto kolmess"></span>
         </button>`
         return;
     }
-    chatlist.innerHTML += `<button type="button" data-id-chat="${idChat}" class="list-group-item list-group-item-action d-flex align-items-center mb-2" onclick="changeChat(this)">
+    chatlist.innerHTML += `<button type="button" data-id-chat="${idChat}" data-group="${isGroup}" class="list-group-item list-group-item-action d-flex align-items-center mb-2" onclick="changeChat(this)">
         <img src="${path}" class="me-3" width="75px">
         ${nameChat}
         <span class="badge bg-danger rounded-pill ms-auto kolmess"></span>
@@ -146,6 +285,24 @@ hubConnection.on("createChat", function (idChat, nameChat, isGroup, path) {
 hubConnection.on("createChatO", function (idChat) {
     location.assign(`/ChatMenu/${idChat}`);
     isClick = false;
+});
+
+//Функция вызов смены имени чата
+function editNameChat() {
+    const name = document.getElementById("nameChatTxt").value;
+    const activeChat = document.querySelector(".active");
+    const idChat = activeChat.dataset.idChat;
+    hubConnection.invoke("ChangeNameChat", idChat, name)
+        .catch(function (err) {
+            return console.error(err.toString());
+        });
+}
+
+//Функция смены имени чата
+hubConnection.on("ChangeNameChat", function (idChat, Name) {
+    const button = document.querySelector(`[data-id-chat="${idChat}"]`);
+    button.innerText = Name;
+    document.getElementById("nameChat").innerText = Name;
 });
 
 function exitClick() {
@@ -198,12 +355,30 @@ function chatbtn(element) {
         return;
     }
     let users = [idUser];
-    hubConnection.invoke("CreateNewChat", users)
+    hubConnection.invoke("CreateNewChat", users, "")
         .catch(function (err) {
             return console.error(err.toString());
         });
-
 }
+
+//Функция создания групового чата
+function createGroupChat() {
+    const chatname = document.getElementById("groupChatName").value;
+    const usersIds = [];
+    const checkedInputs = document.querySelectorAll('.form-check-input:checked');
+    if (checkedInputs.length === 0) {
+        return;
+    }
+    checkedInputs.forEach(input => {
+        usersIds.push(input.dataset.friend);
+    });
+        hubConnection.invoke("CreateNewChat", usersIds, chatname)
+            .catch(function (err) {
+                return console.error(err.toString());
+            });
+        return;
+}
+
 function changeimg(element) {
     const file = element.files[0];
     if (file) {
@@ -290,7 +465,7 @@ async function acceptbtn(element) {
     const but = element;
     const idFrient = but.dataset.user;
     const newBtn = document.getElementById("btnFriend");
-    await fetch(`api/addFr/${idFrient}`).then(response => response.text()).then(text => console.log(text));
+    await fetch(`/api/addFr/${idFrient}`).then(response => response.text()).then(text => console.log(text));
     newBtn.click();
 }
 

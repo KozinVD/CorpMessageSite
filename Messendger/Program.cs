@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.CodeAnalysis.Elfie.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
@@ -273,7 +274,7 @@ namespace Messendger
                 Results.Ok();
             });
 
-            app.MapPost("/sendFiles/{chatId}",async (int chatId ,HttpRequest request, MessendgerDb db, HttpContext context, IHubContext<ChatHub> hubContext) =>
+            app.MapPost("/sendFiles/{chatId}", [Authorize] async (int chatId ,HttpRequest request, MessendgerDb db, HttpContext context, IHubContext<ChatHub> hubContext) =>
             {
                 var userId = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 var form = await request.ReadFormAsync();
@@ -301,7 +302,7 @@ namespace Messendger
                     if (mimeType.StartsWith("video/"))
                         text = $"<video src=\"/userFile/{guid +file.FileName}\" width=\"100%\" controls class=\"p-1\" preload=\"metadata\"></video><p>{textMess}</p>";
                     if (mimeType.StartsWith("audio/"))
-                        text = $"<audio src=\"/userFile/{ guid + file.FileName}\" class=\"mt-1\" style=\"width: 100%;\" controls preload=\"metadata\"></audio><p>{textMess}</p>";
+                        text = $"<div style=\"overflow: hidden;\"><audio src=\"/userFile/{ guid + file.FileName}\" class=\"mt-1\" controls preload=\"metadata\"></audio></div><p>{textMess}</p>";
                     
 
                     Message message = new Message() {
@@ -323,19 +324,67 @@ namespace Messendger
                     string sender = senderInfo.Surname + " " + senderInfo.Name;
                     Chat chat = await db.Chats.Include(x => x.ChatParticipants).Where(x => x.Id == message.IdChat).FirstAsync();
                     await hubContext.Clients.Users(chat.ChatParticipants.Where(p => p.IdUser != userId).Select(p => p.IdUser).ToList()).SendAsync("Receive", chat.Id, sender, message.Text, message.TimeSend);
-                    await hubContext.Clients.Users(userId).SendAsync("ReceiveFileY", chat.Id, sender, message.Text, message.TimeSend);
+                    await hubContext.Clients.Users(userId).SendAsync("ReceiveFileY", chat.Id, sender, message.Text, message.TimeSend.Hour + ":" + message.TimeSend.Minute + " " + message.TimeSend.Date);
 
                     return Results.Ok();
                 }
                 return Results.NotFound();
             });
 
+            //Конечная точка для получения участников чата
+            app.MapGet("/chatPart/{id}",[Authorize] async (int id, MessendgerDb db) =>
+            {
+                var part = await db.ChatParticipants
+                .Include(x => x.IdUserNavigation).ThenInclude(p => p.IdPhotoNavigation)
+                .Include(x => x.IdUserNavigation).ThenInclude(p => p.UserInfo).ThenInclude(p => p.IdJobNavigation).Where(x => x.IdChat == id).Select(p => new
+                {
+                    Id = p.IdUserNavigation.UserInfo.Id,
+                    Surname = p.IdUserNavigation.UserInfo.Surname,
+                    Name = p.IdUserNavigation.UserInfo.Name,
+                    Lastname = p.IdUserNavigation.UserInfo.Lastname,
+                    PhotoPath = itemSearch.GetPath(p.IdUserNavigation.IdPhotoNavigation),
+                    JobName = p.IdUserNavigation.UserInfo.IdJobNavigation.Name
+                }).ToListAsync();
+                if (part.Count == 0)
+                    return Results.NotFound();
+                return Results.Ok(part);
+            });
+
+            //Конечная точка для получения людей не присутствующих в чате
+            app.MapGet("/newChatPart/{id}", [Authorize] async (int id, MessendgerDb db, HttpContext context) =>
+            {
+                Chat curChat = await db.Chats
+            .Include(c => c.ChatParticipants).ThenInclude(p => p.IdUserNavigation).ThenInclude(p => p.UserInfo)
+            .Where(c => c.Id == id).FirstAsync();
+            var userId = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            List<UserInfo> chatPart = curChat.ChatParticipants.Select(p => p.IdUserNavigation.UserInfo).ToList();
+            List<UserInfo> friends = await db.Friends.Include(x => x.IdFriendNavigation).Select(f => f.IdFriendNavigation.UserInfo).ToListAsync();
+            friends.RemoveAll(f => chatPart.Contains(f));
+            if (friends.Count == 0)
+                return Results.NotFound();
+                List<UserInfo> list = new List<UserInfo>();
+            foreach (var f in friends)
+            {
+                    list.Add(await db.UserInfos.Include(u => u.IdNavigation).ThenInclude(u => u.IdPhotoNavigation)
+                        .Include(u => u.IdJobNavigation)
+                        .Where(x => x.Id == f.Id).FirstAsync());
+            }
+            
+                return Results.Ok(list.Select(f => new
+                {
+                    Id = f.Id,
+                    FullName = f.FullName,
+                    Path = itemSearch.GetPath(f.IdNavigation.IdPhotoNavigation),
+                    JobName = f.IdJobNavigation.Name
+                }).ToList().Distinct());
+            });
+
             //Конечная точка для Чата
             app.MapHub<ChatHub>("/chat");
 
 
-            //string url = builder.Configuration.GetConnectionString("Url");
-            //app.Urls.Add(url);
+            string url = builder.Configuration.GetConnectionString("Url");
+            app.Urls.Add(url);
             app.Run();
         }
         public static int GetChatId(List<Chat> chats, string id)

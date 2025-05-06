@@ -21,16 +21,25 @@ namespace Messendger.Pages
         }
         public async Task<ActionResult> OnPostAsync()
         {
-            var result = await signManager.PasswordSignInAsync(input.Email, input.Password, false, false);
-            if (result.Succeeded)
-            return Redirect("/ChatMenu");
-            Console.WriteLine("Неудача!");
-            Console.WriteLine(result);
-            return Redirect("/");
-        }
-        public ActionResult OnGetReg()
-        {
-            return Redirect("/Registration");
+            try
+            {
+                if (string.IsNullOrWhiteSpace(input.Email) || string.IsNullOrWhiteSpace(input.Password))
+                    return Redirect("/");
+                var result = await signManager.PasswordSignInAsync(input.Email, input.Password, false, false);
+                if (result.Succeeded)
+                    return Redirect("/ChatMenu");
+                Console.WriteLine("Неудача!");
+                Console.WriteLine(result);
+                return Redirect("/");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                return BadRequest();
+            }
         }
     }
 }

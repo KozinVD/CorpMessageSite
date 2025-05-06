@@ -6,9 +6,9 @@
     ViewBag.Title = "Чаты";
 }
 <link href="~/styles/ChatStyle.css" rel="stylesheet" asp-append-version="true" />
-<main class="container-lg">
-    <div class="row">
-        <div class="col-1 bg-danger min-vh-100">
+<main class="container-lg" style=" flex: 1 0 auto;">
+    <div class="row" style="height: 100%;">
+        <div class="col-1 bg-danger">
             <div class="row pt-5 justify-items-center">
                 @if (Model.info.IdNavigation.IdPhotoNavigation == null)
                 {
@@ -26,6 +26,12 @@
             </div>
             <div class="row mt-2">
                 <button style="width: 100px;" onclick="exitClick()" class="btn me-5 ms-1 btn-dark">Выйти</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn mt-2 text-light" onclick="loadfriend()" data-bs-toggle="modal" data-bs-target="#newChatModal">
+                    <img src="~/res/image/message.svg" style="width: 70%;" class="mx-auto text-wrap text-break">
+                    Новый чат
+                </button>
             </div>
             <div class="row">
                 <button type="button" class="btn mt-2 text-light" data-bs-toggle="modal" data-bs-target="#modalSearch">
@@ -53,7 +59,7 @@
                         {
                             if (chat.Id == Convert.ToInt32(Model.IdCurChat))
                             {
-                                <button type="button" data-id-chat="@chat.Id" class="list-group-item list-group-item-action d-flex align-items-center mb-2 active text-wrap text-break" onclick="changeChat(this)">
+                                <button type="button" data-id-chat="@chat.Id" data-group="@chat.isGroup" class="list-group-item list-group-item-action d-flex align-items-center mb-2 active text-wrap text-break" onclick="changeChat(this)">
                                 <img src="@chat.PhotoPath" class="me-3" width="75px">
                                 @name
                                 <span class="badge bg-danger rounded-pill ms-auto kolmess"></span>
@@ -61,7 +67,7 @@
                             }
                             else
                             {
-                                <button type="button" data-id-chat="@chat.Id" class="list-group-item list-group-item-action d-flex align-items-center mb-2 text-wrap text-break" onclick="changeChat(this)">
+                                <button type="button" data-id-chat="@chat.Id" data-group="@chat.isGroup" class="list-group-item list-group-item-action d-flex align-items-center mb-2 text-wrap text-break" onclick="changeChat(this)">
                                     <img src="@chat.PhotoPath" class="me-3" width="75px">
                                     @name
                                     <span class="badge bg-danger rounded-pill ms-auto kolmess"></span>
@@ -72,14 +78,14 @@
                         {
                             if (chat.Id == Convert.ToInt32(Model.IdCurChat))
                             {
-                                <button type="button" data-id-chat="@chat.Id" class="list-group-item list-group-item-action mb-2 text-center active" onclick="changeChat(this)">
+                                <button type="button" data-id-chat="@chat.Id" data-group="@chat.isGroup" class="list-group-item list-group-item-action mb-2 text-center active" onclick="changeChat(this)">
                                     @name
                                     <span class="badge bg-danger rounded-pill ms-auto kolmess"></span>
                                 </button>
                             }
                             else
                             {
-                                <button type="button" data-id-chat="@chat.Id" class="list-group-item list-group-item-action mb-2 text-center" onclick="changeChat(this)">
+                                <button type="button" data-id-chat="@chat.Id" data-group="@chat.isGroup" class="list-group-item list-group-item-action mb-2 text-center" onclick="changeChat(this)">
                                     @name
                                     <span class="badge bg-danger rounded-pill ms-auto kolmess"></span>
                                 </button>
@@ -90,7 +96,67 @@
             </div>
         </div>
         <div class="col-8 bg-light d-flex flex-column text-dark">
-            <div class="flex-grow-1 m-3 border border-5 p-3 border-black messcont" style="border-color: black;">
+            @if (Model.IdCurChat == 0)
+            {
+                <div class="row me-3  ms-2 mt-2  p-1">
+                    <h3 id="nameChat" class="col-auto text-center d-none"></h3>
+                    <button class="col-1 btn btn-secondary me-1 d-none" id="btnEditChat" onclick="loadChatPart()" type="button" data-bs-toggle="modal" data-bs-target="#editChatModal">
+                    <img width="25px" src="~/res/image/edit.svg">
+                </button>
+                    <button class="col-1 btn btn-danger d-none" id="btnDelChat" data-bs-toggle="modal" data-bs-target="#delModal" type="button">
+                    <img width="25px" src="~/res/image/trash.svg">
+                </button>
+                </div>
+            }
+            else
+            {
+                if (Model.curChat != null)
+                {
+                if (Model.curChat.IsGroup)
+                {
+                    string name = string.Join(' ', Model.curChat.ChatParticipants.Where(p => p.IdUser != Model.info.Id).Select(p => p.IdUserNavigation.UserInfo.Surname + " " + p.IdUserNavigation.UserInfo.Name));
+                    if (Model.curChat.Name != null)
+                        name = Model.curChat.Name;
+                    <div class="row me-3  ms-2 mt-2  p-1">
+                        <h3 id="nameChat" class="col-auto text-center text-truncate">@name</h3>
+                            <button class="col-1 btn btn-secondary me-1" id="btnEditChat" onclick="loadChatPart()" type="button" data-bs-toggle="modal" data-bs-target="#editChatModal">
+                        <img width="25px" src="~/res/image/edit.svg">
+                    </button>
+                        <button class="col-1 btn btn-danger " id="btnDelChat" data-bs-toggle="modal" data-bs-target="#delModal" type="button">
+                        <img width="25px" src="~/res/image/trash.svg">
+                    </button>
+                    </div>
+                }
+                else
+                {
+                    string name = string.Join(' ', Model.curChat.ChatParticipants.Where(p => p.IdUser != Model.info.Id).Select(p => p.IdUserNavigation.UserInfo.Surname + " " + p.IdUserNavigation.UserInfo.Name));
+                    if (Model.curChat.Name != null)
+                        name = Model.curChat.Name;
+                    <div class="row me-3  ms-2 mt-2  p-1">
+                        <h3 id="nameChat" class="col-auto text-center text-truncate">@name</h3>
+                            <button class="col-1 btn btn-secondary me-1 d-none" id="btnEditChat" onclick="loadChatPart()" type="button" data-bs-toggle="modal" data-bs-target="#editChatModal">
+                            <img width="25px" src="~/res/image/edit.svg">
+                        </button>
+                        <button class="col-1 btn btn-danger d-none" id="btnDelChat" data-bs-toggle="modal" data-bs-target="#delModal" type="button">
+                            <img width="25px" src="~/res/image/trash.svg">
+                        </button>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="row me-3  ms-2 mt-2  p-1">
+                        <h3 id="nameChat" class="col-auto text-center text-truncate d-none"></h3>
+                        <button class="col-1 btn btn-secondary me-1 d-none" id="btnEditChat" onclick="loadChatPart()" type="button" data-bs-toggle="modal" data-bs-target="#editChatModal">
+                            <img width="25px" src="~/res/image/edit.svg">
+                        </button>
+                        <button class="col-1 btn btn-danger d-none" id="btnDelChat" data-bs-toggle="modal" data-bs-target="#delModal" type="button">
+                            <img width="25px" src="~/res/image/trash.svg">
+                        </button>
+                    </div>
+                }
+            }
+            <div class="flex-grow-1 mx-3 border border-5 border-black p-3 messcont" style="border-color: black;">
                 @{
                     foreach (var message in Model.Messages)
                     {
@@ -245,6 +311,101 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                 </div>
+        </div>
+    </div>
+</div>
+@*Модульное окно создание групового чата*@
+<div class="modal fade" id="newChatModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Создание группового чата</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <form class="text-dark" method="dialog">
+            <div class="modal-body">
+
+                    <label class="form-label" for="nameChat">Название чата</label>
+                    <input class="form-control" id="groupChatName" placeholder="Название"/>
+                    <label class="form-label">Выберите участников</label>
+                    <ul class="list-group" id="partList" style="overflow-y: auto;max-height: 40vh;">
+
+                    </ul>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-danger" onclick="createGroupChat()" data-bs-dismiss="modal">Создать</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*Модульное окно удаления чата*@
+<div class="modal fade" id="delModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Удалить чат</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <form class="text-dark" method="dialog">
+                <div class="modal-body">
+                    <p>Вы уверены что хотите удалить данный чат?</p>
+                    <p>Данный чат будет удален у всех участников!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-danger" onclick="delChat()" data-bs-dismiss="modal">Удалить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*Модульное окно изменения чата*@
+<div class="modal fade" id="editChatModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Изменить чат</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <form class="text-dark" method="dialog">
+                <div class="modal-body">
+                    <label class="form-label">Название чата</label>
+                    <input type="text" id="nameChatTxt" class="form-control"/>
+                    <label class="form-label">Участники чата</label>
+                        <ul class="list-group mb-1" id="partChatList" style="overflow-y: auto;max-height: 40vh;">
+
+                        </ul>
+                    <button data-bs-toggle="modal" data-bs-target="#newPartChatModal" onclick="addNewPart()" type="button" class="btn btn-secondary">Добавить участников</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-danger" onclick="editNameChat()" data-bs-dismiss="modal">Изменить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*Модульное окно добавления участников*@
+<div class="modal fade" id="newPartChatModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Добавить участников</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <form class="text-dark" method="dialog">
+                <div class="modal-body">
+                    <ul class="list-group mb-1" id="newPartChatList" style="overflow-y: auto;max-height: 40vh;">
+
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

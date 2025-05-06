@@ -10,6 +10,7 @@ namespace Messendger.Pages
     public class RegistrationModel : PageModel
     {
         public MessendgerDb db { get; set; }
+
         UserManager<User> userManager;
         public RegistrationModel(UserManager<User> _userManager, MessendgerDb db )
         {
@@ -47,12 +48,12 @@ namespace Messendger.Pages
                     db.SaveChanges();
                     return Redirect("/");
                 }
-                Console.WriteLine(input.Password);
-                foreach (var i in  result.Errors)
+                string er = "";
+                foreach (var error in result.Errors)
                 {
-                    Console.WriteLine(i.Description);
+                    Console.WriteLine(error.Description);
                 }
-                return NotFound();
+                return Redirect($"/Registration/");
             }
             catch (Exception ex)
             {

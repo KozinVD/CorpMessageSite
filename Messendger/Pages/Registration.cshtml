@@ -4,51 +4,51 @@
 @{
     ViewBag.Title = "Регистрация";
 }
-    <main class="container mb-2">
+<main class="flex-grow-1 container d-flex flex-column align-items-center">
         <div class="row">
             <div class="col">
                 <h1 class="mt-2 mb-3" style="text-align: center;">Регистрация</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4">
+        <div class="row" style="width: 50%">
                 <form method="post" id="formReg">
                     <label for="surname" class="form-label">Фамилия</label>
-                    <input id="surname" asp-for="input.Surname"  class="form-control mb-3" type="text">
+            <input id="surname" asp-for="input.Surname" class="form-control mb-3" type="text" required>
                     <label for="name" class="form-label">Имя</label>
-                    <input id="name" asp-for="input.Name" class="form-control mb-3" type="text">
+            <input id="name" asp-for="input.Name" class="form-control mb-3" type="text" required>
                     <label for="lastname" class="form-label">Отчество</label>
-                    <input id="lastname" asp-for="input.Lastname" class="form-control mb-3" type="text">
+            <input id="lastname" asp-for="input.Lastname" class="form-control mb-3" type="text" required>
                     <label for="birthday" class="form-label">Дата рождения</label>
-                    <input id="birthday" asp-for="input.Birthday" class="form-control mb-3" type="date">
+            <input id="birthday" asp-for="input.Birthday" class="form-control mb-3" type="date" required>
                     <div class="d-flex align-items-center">
                         <label for="speciality" class="form-label">Ваша специальность</label>
                         <button class="btn bg-light bg-gradient mb-1 ms-1 btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
                     </div>
-                    <select class="form-select mb-3" asp-for="input.IdJob" id="speciality">
-                        <option value="">-- Выберите профессию --</option>
+            <select class="form-select mb-3" asp-for="input.IdJob" id="speciality" required>
+                        <option value="" disabled>-- Выберите профессию --</option>
                         @foreach (var item in Model.db.Jobs)
                         {
                             <option value="@item.Id">@item.Name</option>
                         }
                     </select>
-                    <label for="login" class="form-label">Почта</label>
-                    <input id="login" asp-for="input.Login" class="form-control mb-3" type="email">
-                    <label for="password" class="form-label">Пароль</label>
-                    <input id="password" asp-for="input.Password" class="form-control mb-3" type="password">
-                    <label for="reppassword" class="form-label">Повторите пароль</label>
-                    <input id="reppassword" class="form-control mb-3" type="password">
-                    <div class="container">
-                    <div class="row mt-3 gy-1 justify-content-center">
-                        <button class="btn btn-danger col-md-5" id="inputBtn" type="button" >Войти</button>
-                        <span class="col-md-1"></span>
-                        <input class="btn btn-danger col-md-5" type="submit" value="Зарегистрироваться">
-                        </div>
-                    </div>
-                </form>
+            <div class="invalid-feedback">
+                Пожалуйста, выберите корректную профессию.
             </div>
-            <div class="col-4"></div>
+                    <label for="login" class="form-label">Почта</label>
+            <input id="login" asp-for="input.Login"  class="form-control mb-3" type="email" required>
+                    <label for="password" class="form-label">Пароль</label>
+            <input id="password" asp-for="input.Password" onkeyup="checkPass(this)" class="form-control mb-3" type="password" required>
+            <ul class="list-group list-group-flush" id="errorlist">
+                
+            </ul>
+                    <label for="reppassword" class="form-label">Повторите пароль</label>
+            <input id="reppassword" class="form-control mb-3" type="password" required>
+            <div class="d-flex justify-content-center gap-3 mb-5">
+                <button class="btn btn-danger" style="width: 40%" id="inputBtn" type="button">Войти</button>
+                <input class="btn btn-danger" style="width: 40%" type="submit" value="Зарегистрироваться">
+            </div>
+
+                </form>
         </div>
     </main>
     <div class="modal fade text-black" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -73,3 +73,4 @@
     </div>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/scripts/RegScript.js"></script>
+    

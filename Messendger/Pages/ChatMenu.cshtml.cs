@@ -18,6 +18,7 @@ namespace Messendger.Pages
         {
             this.db = db;
         }
+        public Chat? curChat { get; set; } = null;
         public int IdCurChat { get; private set; } = 0;
         public UserInfo info { get; set; }
         public List<ViewModelChat> Chats { get; set; } = [];
@@ -27,10 +28,19 @@ namespace Messendger.Pages
         public async Task OnGetAsync()
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            IdCurChat = Convert.ToInt32(RouteData.Values["idCurChat"]);
+            if (RouteData.Values["idCurChat"] != null && int.TryParse(RouteData.Values["idCurChat"].ToString(), out int idChat))
+            {
+                IdCurChat = idChat;
+            }
+            else
+            {
+                IdCurChat = 0;
+            }
             if (IdCurChat != 0)
             {
                 Messages = await Message_actions.GetMessage(IdCurChat, db, userId);
+                if (await db.Chats.FindAsync(IdCurChat) != null)
+                curChat = await db.Chats.Include(x => x.ChatParticipants).ThenInclude(x =>x.IdUserNavigation).ThenInclude(x => x.UserInfo).Where(x => x.Id == IdCurChat).FirstAsync();
             }
             info = await db.UserInfos.Include(u => u.IdNavigation).ThenInclude(u => u.IdPhotoNavigation).Where(x => x.IdNavigation.UserName == User.Identity.Name).FirstOrDefaultAsync();
             Chats = await db.ChatParticipants.Include(y => y.IdChatNavigation).ThenInclude(c => c.ChatParticipants).ThenInclude(c => c.IdUserNavigation)
@@ -78,7 +88,9 @@ namespace Messendger.Pages
         {
             if (chat.IsGroup)
                 return "";
-            ChatParticipant Participant = chat.ChatParticipants.Where(p => p.IdUser != curUserId).First();
+            ChatParticipant Participant = chat.ChatParticipants.Where(p => p.IdUser != curUserId).FirstOrDefault();
+            if (Participant == null)
+                return "/res/image/User.png";
             if (Participant.IdUserNavigation.IdPhotoNavigation != null)
             return $"/userImages/{Participant.IdUserNavigation.IdPhotoNavigation.Name}";
             return "/res/image/User.png";

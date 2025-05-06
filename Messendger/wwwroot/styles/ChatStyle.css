@@ -1,7 +1,7 @@
 ﻿.messcont {
     overflow-y: auto;
     display: flex;
-    max-height: 90vh;
+    max-height: 75vh;
     flex-direction: column;
 }
 
@@ -10,7 +10,6 @@
     max-height: 90vh;
     padding: 10px;
 }
-
 .mess.self {
     background-color: gray;
     margin-left: auto;
@@ -27,6 +26,8 @@
     color: white;
     margin-bottom: 10px;
     flex-direction: column;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .textMes {

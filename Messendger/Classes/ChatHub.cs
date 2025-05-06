@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Plugins;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace Messendger.Classes
@@ -45,7 +46,7 @@ namespace Messendger.Classes
 
             }
         }
-        public async Task CreateNewChat(string[] UsersId)
+        public async Task CreateNewChat(string[] UsersId, string chatName)
         {
             string idSender = Context.UserIdentifier;
 
@@ -63,6 +64,8 @@ namespace Messendger.Classes
             if (UsersId.Length > 1)
             {
                 newChat.IsGroup = true;
+                if (chatName != "" && !string.IsNullOrWhiteSpace(chatName))
+                    newChat.Name = chatName;
             }
             await db.Chats.AddAsync(newChat);
             await db.SaveChangesAsync();
@@ -96,6 +99,7 @@ namespace Messendger.Classes
             }
                 await Clients.Users(idSender).SendAsync("createChatO", newChat.Id);
         }
+        
         public static async Task<bool> ChatExsist(string[] ids, string idSender, MessendgerDb db)
         {
             var targetUserIds = ids.Append(idSender).Distinct().OrderBy(id => id).ToList();
@@ -115,6 +119,42 @@ namespace Messendger.Classes
                 }
             }
             return false;
+        }
+        public async Task DeleteChat(string idChatS)
+        {
+            int idChat = int.Parse(idChatS);
+            List<string> particants = await db.ChatParticipants.Where(p => p.IdChat == idChat).Select(p => p.IdUser).ToListAsync(); 
+            db.Chats.Remove(await db.Chats.FindAsync(idChat));
+            await db.SaveChangesAsync();
+            await Clients.Users(particants).SendAsync("DeleteChat", idChat);
+        }
+        public async Task DeleteChatPart(string idChatS, string IdUserP)
+        {
+            ChatParticipant participant = await db.ChatParticipants.Where(p => p.IdChat == int.Parse(idChatS) && p.IdUser == IdUserP).FirstAsync();
+            db.ChatParticipants.Remove(participant);
+            await db.SaveChangesAsync();
+            await Clients.Users(IdUserP).SendAsync("DeleteChat", int.Parse(idChatS));
+        }
+        public async Task ChangeNameChat(string idChatS, string Name)
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+                return;
+            Chat chat = await db.Chats.Include(c => c.ChatParticipants).Where(x => x.Id == int.Parse(idChatS)).FirstAsync();
+            chat.Name = Name;
+            await db.SaveChangesAsync();
+            await Clients.Users(chat.ChatParticipants.Select(p => p.IdUser)).SendAsync("ChangeNameChat", chat.Id, Name);
+        }
+        public async Task AddUserChat(string idChatS, string IdUser)
+        {
+            string idSender = Context.UserIdentifier;
+            Chat curChat = await db.Chats.Include(x => x.ChatParticipants).Where(x => x.Id == int.Parse(idChatS)).FirstAsync();
+            ChatParticipant newParticipant = new ChatParticipant() {IdChat = int.Parse(idChatS), IdUser =IdUser };
+            await db.ChatParticipants.AddAsync(newParticipant);
+            await db.SaveChangesAsync();
+            string name = curChat.Name;
+                if (curChat.Name == null)
+                    name = string.Join(' ', curChat.ChatParticipants.Where(p => p.IdUser != idSender).Select(p => p.IdUserNavigation.UserInfo.Surname + " " + p.IdUserNavigation.UserInfo.Name));
+                await Clients.Users(IdUser).SendAsync("createChat", curChat.Id, name, true, "/res/image/User.png");
         }
     }
 }
