@@ -1,0 +1,71 @@
+﻿.messcont {
+    overflow-y: auto;
+    display: flex;
+    max-height: 75vh;
+    flex-direction: column;
+}
+
+.listChat {
+    overflow-y: auto;
+    max-height: 90vh;
+    padding: 10px;
+}
+.mess.self {
+    background-color: gray;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.mess {
+    display: flex;
+    background-color: blue;
+    max-width: 70%;
+    margin-right: auto;
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    margin-bottom: 10px;
+    flex-direction: column;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.textMes {
+    font-size: 24px;
+}
+
+.timeMes {
+    font-size: 10px;
+    margin-left: auto;
+}
+#messTxt{
+    border-color: black;
+}
+.userMes {
+    font-size: 10px;
+}
+.file-button {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-button img {
+width: 24px;
+height: 24px;
+}
+
+.file-button input[type="file"] {
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+cursor: pointer;
+}

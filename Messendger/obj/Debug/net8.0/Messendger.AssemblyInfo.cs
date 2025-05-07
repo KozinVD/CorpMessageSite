@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Messendger")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc2b557f504068f99812379b41892539f27fe249")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2941a192b9daec34cd06b62c5286b45f477046c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Messendger")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Messendger")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

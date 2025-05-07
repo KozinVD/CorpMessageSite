@@ -1,0 +1,261 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\bootstrap\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\bootstrap\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\Sinara.png",
+      "PackagePath": "staticwebassets\\res\\image\\Sinara.png"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\User.png",
+      "PackagePath": "staticwebassets\\res\\image\\User.png"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\edit.svg",
+      "PackagePath": "staticwebassets\\res\\image\\edit.svg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\friends.svg",
+      "PackagePath": "staticwebassets\\res\\image\\friends.svg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\mess.svg",
+      "PackagePath": "staticwebassets\\res\\image\\mess.svg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\message.svg",
+      "PackagePath": "staticwebassets\\res\\image\\message.svg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\screpka.svg",
+      "PackagePath": "staticwebassets\\res\\image\\screpka.svg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\search.svg",
+      "PackagePath": "staticwebassets\\res\\image\\search.svg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\trash.svg",
+      "PackagePath": "staticwebassets\\res\\image\\trash.svg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\sounds\\mesSound.mp3",
+      "PackagePath": "staticwebassets\\res\\sounds\\mesSound.mp3"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\scripts\\ChatScript.js",
+      "PackagePath": "staticwebassets\\scripts\\ChatScript.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\scripts\\InputScript.js",
+      "PackagePath": "staticwebassets\\scripts\\InputScript.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\scripts\\RegScript.js",
+      "PackagePath": "staticwebassets\\scripts\\RegScript.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\scripts\\signalr.min.js",
+      "PackagePath": "staticwebassets\\scripts\\signalr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\styles\\ChatStyle.css",
+      "PackagePath": "staticwebassets\\styles\\ChatStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\styles\\GlobalStyle.css",
+      "PackagePath": "staticwebassets\\styles\\GlobalStyle.css"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.Messendger.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.Messendger.props",
+      "PackagePath": "build\\Messendger.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Messendger.props",
+      "PackagePath": "buildMultiTargeting\\Messendger.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.Messendger.props",
+      "PackagePath": "buildTransitive\\Messendger.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
