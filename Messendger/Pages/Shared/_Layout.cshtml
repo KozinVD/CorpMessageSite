@@ -1,10 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
 <html style="height: 100%">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/styles/GlobalStyle.css" />
+    <link rel="icon" href="~/res/image/icon.ico" />
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/styles/GlobalStyle.css" asp-append-version="true" />
 </head>
 <body class="bg-dark text-light" style="height: 100%;  display: flex; flex-direction: column;">
      <nav class="navbar bg-danger">

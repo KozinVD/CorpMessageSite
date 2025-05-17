@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8V9HkWXQUGc/7z67KhV83KvTT/71+QGnzTSBBQR7YEM=",
+  "Hash": "e9jjST/9wpzN3Irn7gPSSUcMHhuuNtD0E8dwV+A+EUY=",
   "Source": "Messendger",
   "BasePath": "_content/Messendger",
   "Mode": "Default",
@@ -1022,6 +1022,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\res\\image\\User.png"
+    },
+    {
+      "Identity": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\sounds\\mesSound.mp3",
+      "SourceId": "Messendger",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\",
+      "BasePath": "_content/Messendger",
+      "RelativePath": "res/sounds/mesSound.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\res\\sounds\\mesSound.mp3"
     },
     {
       "Identity": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\scripts\\ChatScript.js",

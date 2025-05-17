@@ -31,10 +31,13 @@ namespace Messendger.Pages
         }
         public async Task<ActionResult> OnPostAsync()
         {
+            //Регистрация новых пользователей
             try
             {
+                //Создание нового пользователя
                 var newUser = new User() { Email = input.Login, LastLoginDate = DateOnly.FromDateTime(DateTime.Now), UserName = input.Login };
                 var result = await userManager.CreateAsync(newUser, input.Password);
+                //Если пользователь создан успешно сохраняем его личные данные в Базу данных
                 if (result.Succeeded)
                 {
                     var newInfo = new UserInfo();
@@ -44,15 +47,12 @@ namespace Messendger.Pages
                     newInfo.Birthday = input.Birthday;
                     newInfo.IdJob = int.Parse(input.IdJob);
                     newInfo.Id = db.Users.Where(x => x.Email == input.Login).First().Id;
-                    db.UserInfos.Add(newInfo);
-                    db.SaveChanges();
+                    await db.UserInfos.AddAsync(newInfo);
+                    await db.SaveChangesAsync();
+                    //Возврат на страницу входа
                     return Redirect("/");
                 }
-                string er = "";
-                foreach (var error in result.Errors)
-                {
-                    Console.WriteLine(error.Description);
-                }
+                //Если что-то не так возращаем на страницу регистрации
                 return Redirect($"/Registration/");
             }
             catch (Exception ex)
@@ -64,12 +64,12 @@ namespace Messendger.Pages
         [BindProperty]
         [Required]
         public string NameJob { get; set; }
-        public ActionResult OnPostAddSpecialty()
+        public async Task<ActionResult> OnPostAddSpecialty()
         {
             if (string.IsNullOrWhiteSpace(NameJob))
                 return Redirect("/Registration");
-            db.Jobs.Add(new Job() { Name =  NameJob });
-            db.SaveChanges();
+            await db.Jobs.AddAsync(new Job() { Name =  NameJob });
+            await db.SaveChangesAsync();
             return Redirect("/Registration");
         }
     }

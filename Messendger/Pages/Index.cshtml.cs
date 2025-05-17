@@ -21,15 +21,19 @@ namespace Messendger.Pages
         }
         public async Task<ActionResult> OnPostAsync()
         {
+            //Авторизация пользователя
             try
             {
                 if (string.IsNullOrWhiteSpace(input.Email) || string.IsNullOrWhiteSpace(input.Password))
                     return Redirect("/");
+                //Проверка введных данных пользователя
                 var result = await signManager.PasswordSignInAsync(input.Email, input.Password, false, false);
                 if (result.Succeeded)
+                    //Если данные верны переадрисация на главную страницу
                     return Redirect("/ChatMenu");
                 Console.WriteLine("Неудача!");
                 Console.WriteLine(result);
+                //Если данные неверны переадрисация на страницу входа
                 return Redirect("/");
             }
             catch (Exception ex)

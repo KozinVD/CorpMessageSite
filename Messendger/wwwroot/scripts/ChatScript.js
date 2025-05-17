@@ -56,6 +56,8 @@ async function changeChat(element) {
     }
     const messContainer = document.querySelector(".messcont");
     messContainer.innerHTML = "";
+    const UvedElement = element.querySelector(".kolmess");
+    UvedElement.innerText = "";
     //Фукнция загрузки сообщений
     await fetch(`/api/message/${id}`)
         .then(response => response.json())
@@ -116,8 +118,11 @@ function sendMess(e) {
     const newMess = document.createElement("div");
     newMess.classList.add("mess");
     newMess.classList.add("self");
-    newMess.innerHTML = `<div class="userMes">${name}</div><div class="textMes">${txtMes}</div><div class="timeMes">${timeMess.getHours()}:${timeMess.getMinutes()} ${timeMess.toLocaleDateString()}</div>`;
+    //Показ сообщения на странице
+    newMess.innerHTML = `<div class="userMes">${name}</div><div class="textMes">${txtMes}</div>
+    <div class="timeMes">${timeMess.getHours()}:${timeMess.getMinutes()} ${timeMess.toLocaleDateString()}</div>`;
     messContainer.appendChild(newMess);
+    //Воспроизведение звука
     audio.play();
     messContainer.scrollTop = messContainer.scrollHeight;
 }
@@ -127,11 +132,13 @@ audio.volume = 0.5;
 
 //Функция принятия сообщения
 hubConnection.on("Receive", function (idChat, sender, message, timeMessage) {
+    //Воспроизведение звука
     audio.play();
     const activeElement = document.querySelector(".active");
     let chatId = 0;
     if (activeElement != null)
-    chatId = activeElement.dataset.idChat;
+        chatId = activeElement.dataset.idChat;
+    //Проверка открыт ли чат в который пришло сообщение
     if (chatId != idChat) {
         const chat = document.querySelector(`[data-id-chat="${idChat}"]`);
         const UvedElement = chat.querySelector(".kolmess");
@@ -142,10 +149,13 @@ hubConnection.on("Receive", function (idChat, sender, message, timeMessage) {
     const messContainer = document.querySelector(".messcont");
     const newMess = document.createElement("div");
     newMess.classList.add("mess");
+    //Показ сообщения на странице
     newMess.innerHTML = `<div class="userMes">${sender}</div><div class="textMes">${message}</div><div class="timeMes">${timeMessage}</div>`;
     messContainer.appendChild(newMess);
+    //Пролистование в конец списка сообщений
     messContainer.scrollTop = messContainer.scrollHeight;
 });
+//Функция принятия сообщения сообщения файлов(свои)
 hubConnection.on("ReceiveFileY", function (idChat, sender, message, timeMessage) {
     audio.play();
     const activeElement = document.querySelector(".active");

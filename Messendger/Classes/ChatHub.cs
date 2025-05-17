@@ -22,8 +22,10 @@ namespace Messendger.Classes
         {
             try
             {
+                //Получения отправителя
                 string idSender = Context.UserIdentifier;
                 int idChat = int.Parse(idChatS);
+                //Поиск нужного чата
                 Chat chat = db.Chats.Include(x => x.ChatParticipants).Where(x => x.Id == idChat).FirstOrDefault();
                 UserInfo senderInfo = await db.UserInfos.FindAsync(idSender);
                 string sender = senderInfo.Surname + " " + senderInfo.Name;

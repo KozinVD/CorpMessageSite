@@ -27,6 +27,7 @@ namespace Messendger
                 serverOptions.Limits.MaxRequestBodySize = 104857600; // 100 MB
             });
             var app = builder.Build();
+            app.UseHsts();
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -183,7 +184,8 @@ namespace Messendger
             app.MapGet("/api/getFriend", [Authorize] async (HttpContext context, MessendgerDb db) =>
             {
                 var userId = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                var userChats = await db.ChatParticipants.Include(x=> x.IdChatNavigation).ThenInclude(x =>x.ChatParticipants).Where(x => x.IdUser == userId).Select(x => x.IdChatNavigation).Where(x => !x.IsGroup).ToListAsync();
+                var userChats = await db.ChatParticipants.Include(x=> x.IdChatNavigation).ThenInclude(x =>x.ChatParticipants)
+                .Where(x => x.IdUser == userId).Select(x => x.IdChatNavigation).Where(x => !x.IsGroup).ToListAsync();
                 var userFriends = await db.Friends.Include(f => f.IdFriendNavigation).ThenInclude(x => x.UserInfo).ThenInclude(x => x.IdJobNavigation)
                 .Include(f => f.IdFriendNavigation).ThenInclude(x => x.IdPhotoNavigation)
                 .Where(x => x.IdUser == userId).Select(u => new
@@ -386,6 +388,11 @@ namespace Messendger
             string url = builder.Configuration.GetConnectionString("Url");
             app.Urls.Add(url);
             app.Run();
+            //while (true)
+            //{
+            //    Console.Write(">");
+            //    var input = Console.ReadLine();
+            //}
         }
         public static int GetChatId(List<Chat> chats, string id)
         {
@@ -396,6 +403,7 @@ namespace Messendger
             }
             return 0;
         }
+        
     }
     public class itemSearch
     {

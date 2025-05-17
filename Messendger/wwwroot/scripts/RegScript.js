@@ -5,6 +5,7 @@ function RedirectToInput(){
     location.assign("/");
 }
 
+//Проверка введных пользователем данных перед отправкой на сервер
 function Check(e) {
     e.preventDefault();
     const pasTxt = document.getElementById("password");
@@ -26,6 +27,7 @@ function Check(e) {
     // Если все проверки пройдены, отправляем форму
     e.target.submit();
 }
+//Функция проверки валидности пароля
 function checkPass(element) {
     const pass = element.value;
     const list = document.getElementById("errorlist");

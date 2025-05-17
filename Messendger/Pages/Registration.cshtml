@@ -10,8 +10,8 @@
                 <h1 class="mt-2 mb-3" style="text-align: center;">Регистрация</h1>
             </div>
         </div>
-        <div class="row" style="width: 50%">
-                <form method="post" id="formReg">
+        <div class="row" style="width: 40%">
+        <form method="post" id="formReg">
                     <label for="surname" class="form-label">Фамилия</label>
             <input id="surname" asp-for="input.Surname" class="form-control mb-3" type="text" required>
                     <label for="name" class="form-label">Имя</label>
@@ -71,6 +71,6 @@
             </div>
         </div>
     </div>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/scripts/RegScript.js"></script>
+    <script src="~/bootstrap/js/bootstrap.js" asp-append-version="true"></script>
+<script src="~/scripts/RegScript.js" asp-append-version="true"></script>
     

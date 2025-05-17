@@ -21,7 +21,6 @@ function Check(e) {
     }
 
     if (validatePassword(pasTxt.value).length !== 0) {
-        pasTxt.setCustomValidity(validatePassword(pasTxt.value));
         return;
     }
     // Если все проверки пройдены, отправляем форму

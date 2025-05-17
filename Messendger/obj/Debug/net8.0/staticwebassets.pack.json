@@ -213,6 +213,10 @@
       "PackagePath": "staticwebassets\\res\\image\\trash.svg"
     },
     {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\sounds\\mesSound.mp3",
+      "PackagePath": "staticwebassets\\res\\sounds\\mesSound.mp3"
+    },
+    {
       "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\scripts\\ChatScript.js",
       "PackagePath": "staticwebassets\\scripts\\ChatScript.js"
     },

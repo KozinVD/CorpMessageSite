@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>wwwroot\res\image\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -95,6 +96,10 @@
     <Content Remove="C:\Users\rjpby\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.js.map" />
     <Content Remove="C:\Users\rjpby\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.min.js" />
     <Content Remove="C:\Users\rjpby\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.min.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\res\image\icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
