@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "k3e4UIE+/PCulDv3hl5snRXcgelfpo1lPerxwxWewUA=",
+  "Hash": "1yDkMsZXGwZ3ARkY6ZZ9ePn82zvtmlP7h9zrwrOh7MQ=",
   "Source": "Messendger",
   "BasePath": "_content/Messendger",
   "Mode": "Default",
@@ -1176,6 +1176,25 @@
       "OriginalItemSpec": "wwwroot\\styles\\GlobalStyle.css"
     },
     {
+      "Identity": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\35b5b311-ee72-4708-9be5-24688a160eb6VideoCat.mp4",
+      "SourceId": "Messendger",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\",
+      "BasePath": "_content/Messendger",
+      "RelativePath": "userFile/35b5b311-ee72-4708-9be5-24688a160eb6VideoCat.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\userFile\\35b5b311-ee72-4708-9be5-24688a160eb6VideoCat.mp4"
+    },
+    {
       "Identity": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\74ca5e41-7941-4e48-8302-75864664abeeЗакупки.docx",
       "SourceId": "Messendger",
       "SourceType": "Discovered",
@@ -1250,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\userFile\\e68ff2fe-f39b-4b91-a8ed-0c988d9cf315Photo2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\eafa6f96-171c-4d86-a95e-633146e0f633SoundCat.mp3",
+      "SourceId": "Messendger",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\",
+      "BasePath": "_content/Messendger",
+      "RelativePath": "userFile/eafa6f96-171c-4d86-a95e-633146e0f633SoundCat.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\userFile\\eafa6f96-171c-4d86-a95e-633146e0f633SoundCat.mp3"
     },
     {
       "Identity": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\fadce662-28cf-4eb7-8784-bff688fa65f4Документ.docx",

@@ -115,6 +115,8 @@ function sendMess(e) {
         return;
     }
     //Функция отправки на сервер
+    if (!txtMes || !txtMes.trim())
+        return;
     hubConnection.invoke("Send", chatId, txtMes, `${timeMess.getHours()}:${timeMess.getMinutes()} ${timeMess.toLocaleDateString()}`)
         .catch(function (err) {
             return console.error(err.toString());

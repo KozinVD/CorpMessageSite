@@ -47,7 +47,11 @@ async function changeChat(element) {
     const editbtn = document.getElementById("btnEditChat")
     const delbtn = document.getElementById("btnDelChat")
     document.getElementById("nameChat").classList.remove("d-none");
-    document.getElementById("nameChat").innerText = element.innerText;
+    const span = element.querySelector('span');
+    const spanText = span ? span.textContent : '';
+    const fullText = element.textContent.trim();
+    const textWithoutSpan = fullText.replace(spanText, '').trim();
+    document.getElementById("nameChat").innerText = textWithoutSpan;
     const img = element.querySelector('img');
     const showButtons = !element.querySelector('img');
     if (delbtn && editbtn) {

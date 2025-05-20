@@ -193,6 +193,10 @@
       "PackagePath": "staticwebassets\\res\\image\\friends.svg"
     },
     {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\icon.ico",
+      "PackagePath": "staticwebassets\\res\\image\\icon.ico"
+    },
+    {
       "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\mess.svg",
       "PackagePath": "staticwebassets\\res\\image\\mess.svg"
     },
@@ -239,6 +243,50 @@
     {
       "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\styles\\GlobalStyle.css",
       "PackagePath": "staticwebassets\\styles\\GlobalStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\35b5b311-ee72-4708-9be5-24688a160eb6VideoCat.mp4",
+      "PackagePath": "staticwebassets\\userFile\\35b5b311-ee72-4708-9be5-24688a160eb6VideoCat.mp4"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\74ca5e41-7941-4e48-8302-75864664abeeЗакупки.docx",
+      "PackagePath": "staticwebassets\\userFile\\74ca5e41-7941-4e48-8302-75864664abeeЗакупки.docx"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\863c0f42-28ca-48a3-b3d5-8c233cf997efДокумент.docx",
+      "PackagePath": "staticwebassets\\userFile\\863c0f42-28ca-48a3-b3d5-8c233cf997efДокумент.docx"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\86c59403-2de5-41cc-8518-bbfd6ab4f363Документ.docx",
+      "PackagePath": "staticwebassets\\userFile\\86c59403-2de5-41cc-8518-bbfd6ab4f363Документ.docx"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\e68ff2fe-f39b-4b91-a8ed-0c988d9cf315Photo2.jpg",
+      "PackagePath": "staticwebassets\\userFile\\e68ff2fe-f39b-4b91-a8ed-0c988d9cf315Photo2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\eafa6f96-171c-4d86-a95e-633146e0f633SoundCat.mp3",
+      "PackagePath": "staticwebassets\\userFile\\eafa6f96-171c-4d86-a95e-633146e0f633SoundCat.mp3"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\fadce662-28cf-4eb7-8784-bff688fa65f4Документ.docx",
+      "PackagePath": "staticwebassets\\userFile\\fadce662-28cf-4eb7-8784-bff688fa65f4Документ.docx"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userFile\\fb24105f-375c-4808-8757-6d2090e29335Отчёт.docx",
+      "PackagePath": "staticwebassets\\userFile\\fb24105f-375c-4808-8757-6d2090e29335Отчёт.docx"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userImages\\avatar1.jpg",
+      "PackagePath": "staticwebassets\\userImages\\avatar1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userImages\\avatar4.png",
+      "PackagePath": "staticwebassets\\userImages\\avatar4.png"
+    },
+    {
+      "Id": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\userImages\\avatar5.jpg",
+      "PackagePath": "staticwebassets\\userImages\\avatar5.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Messendger.Microsoft.AspNetCore.StaticWebAssets.props",
