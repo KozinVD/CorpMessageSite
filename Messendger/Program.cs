@@ -325,7 +325,7 @@ namespace Messendger
                     UserInfo senderInfo = await db.UserInfos.FindAsync(userId);
                     string sender = senderInfo.Surname + " " + senderInfo.Name;
                     Chat chat = await db.Chats.Include(x => x.ChatParticipants).Where(x => x.Id == message.IdChat).FirstAsync();
-                    await hubContext.Clients.Users(chat.ChatParticipants.Where(p => p.IdUser != userId).Select(p => p.IdUser).ToList()).SendAsync("Receive", chat.Id, sender, message.Text, message.TimeSend);
+                    await hubContext.Clients.Users(chat.ChatParticipants.Where(p => p.IdUser != userId).Select(p => p.IdUser).ToList()).SendAsync("Receive", chat.Id, sender, message.Text, message.TimeSend.Hour + ":" + message.TimeSend.Minute + " " + message.TimeSend.Date);
                     await hubContext.Clients.Users(userId).SendAsync("ReceiveFileY", chat.Id, sender, message.Text, message.TimeSend.Hour + ":" + message.TimeSend.Minute + " " + message.TimeSend.Date);
 
                     return Results.Ok();

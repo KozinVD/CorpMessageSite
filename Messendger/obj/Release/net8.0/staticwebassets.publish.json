@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PKtDq5M+/GYS/DkFYeiXggGu7j5ScQMRQVErQJotQbY=",
+  "Hash": "zrz5kLVfizFnpY8ZGL1Wh6LkQwq1smbGJ3u74ud3yqg=",
   "Source": "Messendger",
   "BasePath": "_content/Messendger",
   "Mode": "Default",
@@ -889,6 +889,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\res\\image\\friends.svg"
+    },
+    {
+      "Identity": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\icon.ico",
+      "SourceId": "Messendger",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\",
+      "BasePath": "_content/Messendger",
+      "RelativePath": "res/image/icon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\res\\image\\icon.ico"
     },
     {
       "Identity": "C:\\Users\\rjpby\\Desktop\\Диплом\\Messendger\\Messendger\\wwwroot\\res\\image\\mess.svg",

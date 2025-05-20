@@ -201,8 +201,7 @@ namespace Messendger.Migrations
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("text");
 
                     b.Property<DateTime>("TimeSend")
